@@ -1,0 +1,41 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}ProductOption index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>ProductOption index</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product_option in product_options %}
+                <tr>
+                    <td>{{ product_option.id }}</td>
+                    <td>{{ product_option.name }}</td>
+                    <td>{{ product_option.createdAt ? product_option.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ product_option.updatedAt ? product_option.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_SHOW'), {'id': product_option.id}) }}">show</a>
+                        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_EDIT'), {'id': product_option.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_NEW')) }}">Create new</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+    {{ form_widget(form.name) }}
+    {{ form_label(form.productOptionValues) }}
+<ul class="productOptionValues" data-prototype="{{ form_widget(form.productOptionValues.vars.prototype)|e('html_attr') }}" data-widget-counter="{{ form.productOptionValues|length }}">
+    {% for productOptionValueField in form.productOptionValues %}
+        <li>
+            {{ form_widget(productOptionValueField) }}
+        </li>
+    {% endfor %}
+</ul>
+
+<button type="button" class="add_item_link btn btn-info" data-collection-holder-class=".productOptionValues">Add a product option</button>
+{{ form_widget(form._token) }}
+<button class="btn btn-success mt-2 float-right">{{ button_label|default('Save') }}</button>
+{{ form_end(form, {'render_rest': false}) }}

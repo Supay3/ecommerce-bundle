@@ -1,0 +1,15 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Edit Product</h1>
+
+        {{ include('admin/product/product/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_INDEX')) }}">back to list</a>
+
+        {{ include('admin/product/product/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
