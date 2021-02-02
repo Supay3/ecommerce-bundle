@@ -24,7 +24,7 @@ export class AbstractCollectionType {
                     if (currentOption.value === option.value) {
                         if (currentOption.hasAttribute('selected')) {
                             currentOption.removeAttribute('selected');
-                            AbstractCollectionType.removeValueFromCounter(counter, currentOption.value);
+                            AbstractCollectionType.removeValueFromArray(counter, currentOption.value);
                         }
                     }
                 }
@@ -48,7 +48,7 @@ export class AbstractCollectionType {
      * @param {array} array The array which you want to delete the value from
      * @param value The value you want to delete
      */
-    static removeValueFromCounter (array, value) {
+    static removeValueFromArray (array, value) {
         let index = array.indexOf(value);
         if (index !== -1) {
             array.splice(index, 1);

@@ -1,47 +1,46 @@
 {% extends 'admin/admin_base.html.twig' %}
 
 {% block title %}Product index{% endblock %}
+{% block admin_context_title 'Products' %}
 
 {% block body %}
-    <div class="container">
-        <h1>Product index</h1>
+    <h1>Product index</h1>
 
-        <table class="table">
-            <thead>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Stock</th>
+            <th>Created_at</th>
+            <th>Updated_at</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Stock</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                <th>actions</th>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_SHOW'), {'id': product.id}) }}">show</a>
+                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_EDIT'), {'id': product.id}) }}">edit</a>
+                </td>
             </tr>
-            </thead>
-            <tbody>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.id }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.stock }}</td>
-                    <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>
-                        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_SHOW'), {'id': product.id}) }}">show</a>
-                        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_EDIT'), {'id': product.id}) }}">edit</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="8">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_NEW')) }}">Create new</a>
-    </div>
+    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_NEW')) }}">Create new</a>
 {% endblock %}

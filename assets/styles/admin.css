@@ -1,0 +1,153 @@
+/* We make the fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+/* We remove the browser basics */
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+html {
+    background: #EFEFEF;
+}
+
+/* We start designing the top bar */
+header.admin-header {
+    display: flex;
+    background: #FFF;
+}
+
+.logo {
+    display: flex;
+    min-width: 250px;
+    background: #2C2F3D;
+    height: 73px;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo h1 {
+    font-family: 'Source Code Pro', monospace;
+    color: #FFF;
+}
+nav.navbar-top {
+    width: 100vw;
+    display: flex;
+    height: 73px;
+    box-shadow: 0 4px 10px rgba(145, 145, 145, 0.36);
+}
+
+/* We design the sidebar */
+main {
+    display: flex;
+}
+
+.admin-sidebar {
+    border-top: 1px #EFEFEF solid;
+    padding: 10px 0 0 30px;
+    background: #2C2F3D;
+    width: 250px;
+    height: 100vh;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.admin-sidebar h3 {
+    color: #EFEFEF;
+    font-size: 23px;
+}
+
+.sidebar-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-list a {
+    text-decoration: none;
+    color: #B0B0B0;
+    margin: 10px 40px 0 10px;
+    font-size: 14px;
+    padding: 0.3em;
+    border: 1px solid transparent;
+    transition: .3s;
+}
+
+.sidebar-list a:hover,
+.sidebar-list a.active {
+    background: #EFEFEF;
+    border-radius: 3px;
+    font-weight: bold;
+    border: solid 1px #B0B0B0;
+    color: #7A7A7A;
+}
+
+.sidebar-list a:hover::before,
+.sidebar-list a.active::before {
+    opacity: 1;
+}
+
+.sidebar-list a::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    margin-top: -2px;
+    margin-right: 10px;
+    opacity: .5;
+    background: url('images/products.svg') center center / contain no-repeat;
+    transition: opacity .3s;
+}
+
+.sidebar-list .sidebar-products::before {
+    background-image: url('images/products.svg');
+}
+
+.sidebar-list .sidebar-product-attributes::before {
+    background-image: url('images/product_options.svg');
+}
+
+.sidebar-list .sidebar-product-options::before {
+    background-image: url('images/product_options.svg');
+}
+
+/* We design the content */
+.admin-context-title {
+    margin: 10px 0 0 50px;
+    font-size: 30px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.admin-context-title::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+    background: url('images/products.svg') center center / contain no-repeat;
+}
+
+section.admin-container {
+    margin: 70px auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

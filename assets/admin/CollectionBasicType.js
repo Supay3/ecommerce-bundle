@@ -1,6 +1,13 @@
 import {AbstractCollectionType} from "./AbstractCollectionType.js";
 
+/**
+ * This class allows you to create easily a Collection adding feature for Symfony
+ */
 export class CollectionBasicType extends AbstractCollectionType {
+
+    /**
+     * @param {HTMLElement} button The button to add an item to the collection
+     */
     constructor(button) {
         super();
         this.addButton = button;
