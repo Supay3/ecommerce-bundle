@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Admin -{% endblock %}</title>
+        <title>{% block title 'Admin - ' %}</title>
         {{ encore_entry_link_tags('app') }}
         {% block stylesheets %}{% endblock %}
 
@@ -21,16 +21,14 @@
             <nav class="admin-sidebar">
                 <h3>Products</h3>
                 <div class="sidebar-list">
-                    <a href="#" class="sidebar-products">Products</a>
-                    <a href="#" class="sidebar-product-attributes">Product Attributes</a>
-                    <a href="#" class="sidebar-product-options">Product Options</a>
+                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_INDEX')) }}" class="sidebar-products">Products</a>
+                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_ATTRIBUTE_INDEX')) }}" class="sidebar-product-attributes">Product Attributes</a>
+                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_INDEX')) }}" class="sidebar-product-options">Product Options</a>
                 </div>
             </nav>
-
             <h2 class="admin-context-title">{% block admin_context_title %}{% endblock %}</h2>
-            <section class="admin-container">
+
                 {% block body %}{% endblock %}
-            </section>
 
         </main>
         {{ encore_entry_script_tags('app') }}

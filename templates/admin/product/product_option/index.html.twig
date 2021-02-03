@@ -1,41 +1,39 @@
 {% extends 'admin/admin_base.html.twig' %}
 
 {% block title %}ProductOption index{% endblock %}
+{% block admin_context_title 'Product Options' %}
 
 {% block body %}
-    <div class="container">
-        <h1>ProductOption index</h1>
-
-        <table class="table">
-            <thead>
+<section class="admin-content-container">
+    <table class="admin-table">
+        <thead class="admin-table-head-index">
+        <tr>
+            <th>Name</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody class="admin-table-body-index">
+        {% for product_option in product_options %}
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                <th>actions</th>
+                <td>{{ product_option.name }}</td>
+                <td>{{ product_option.createdAt ? product_option.createdAt|date('d/m/Y') : '' }}</td>
+                <td>{{ product_option.updatedAt ? product_option.updatedAt|date('d/m/Y') : '' }}</td>
+                <td class="admin-actions">
+                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_SHOW'), {'id': product_option.id}) }}">Details</a><!--
+                    --><a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_EDIT'), {'id': product_option.id}) }}">Edit</a><!--
+                    -->{{ include('admin/product/product_option/_delete_form.html.twig') }}
+                </td>
             </tr>
-            </thead>
-            <tbody>
-            {% for product_option in product_options %}
-                <tr>
-                    <td>{{ product_option.id }}</td>
-                    <td>{{ product_option.name }}</td>
-                    <td>{{ product_option.createdAt ? product_option.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>{{ product_option.updatedAt ? product_option.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>
-                        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_SHOW'), {'id': product_option.id}) }}">show</a>
-                        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_EDIT'), {'id': product_option.id}) }}">edit</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="5">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
 
-        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_NEW')) }}">Create new</a>
-    </div>
+    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_NEW')) }}" class="button-top create">Create</a>
 {% endblock %}

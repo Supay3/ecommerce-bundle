@@ -1,13 +1,13 @@
 {% extends 'admin/admin_base.html.twig' %}
 
-{% block title %}New ProductOption{% endblock %}
+{% block title 'Create Product Option' %}
+{% block admin_context_title 'Create Product Option' %}
 
 {% block body %}
-    <div class="container">
-        <h1>Create new ProductOption</h1>
+    <section class="admin-content-container">
 
         {{ include('admin/product/product_option/_form.html.twig') }}
 
         <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_INDEX')) }}">back to list</a>
-    </div>
+    </section>
 {% endblock %}

@@ -1,36 +1,29 @@
 {% extends 'admin/admin_base.html.twig' %}
 
 {% block title %}ProductOption{% endblock %}
+{% block admin_context_title 'Product Option "' ~ product_option.name ~ '"'  %}
 
 {% block body %}
-    <div class="container">
-        <h1>ProductOption</h1>
-
-        <table class="table">
+    <section class="admin-content-container">
+        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_INDEX')) }}" class="admin-back">back to list</a>
+        <table class="admin-table show">
             <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product_option.id }}</td>
-            </tr>
             <tr>
                 <th>Name</th>
                 <td>{{ product_option.name }}</td>
             </tr>
             <tr>
-                <th>Created_at</th>
-                <td>{{ product_option.createdAt ? product_option.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Created at</th>
+                <td>{{ product_option.createdAt ? product_option.createdAt|date('d/m/Y H:i') : '' }}</td>
             </tr>
             <tr>
-                <th>Updated_at</th>
-                <td>{{ product_option.updatedAt ? product_option.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Updated at</th>
+                <td>{{ product_option.updatedAt ? product_option.updatedAt|date('Y-m-d H:i') : '' }}</td>
             </tr>
             </tbody>
         </table>
 
-        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_INDEX')) }}">back to list</a>
+        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_EDIT'), {'id': product_option.id}) }}" class="button-top edit">Edit</a>
 
-        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_EDIT'), {'id': product_option.id}) }}">edit</a>
-
-        {{ include('admin/product/product_option/_delete_form.html.twig') }}
-    </div>
+    </section>
 {% endblock %}

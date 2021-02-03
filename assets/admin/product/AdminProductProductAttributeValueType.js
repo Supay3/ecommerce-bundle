@@ -122,7 +122,7 @@ export class AdminProductProductAttributeValueType extends AbstractCollectionTyp
         let options = newProductAttributeValueLi.getElementsByTagName('option');
         for (let i = 0; i < options.length; i++) {
             let option = options[i];
-            if (option === currentlySelectedOption.value) {
+            if (option.value === currentlySelectedOption.value) {
                 option.setAttribute('selected', 'selected');
             }
         }
