@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,28 +22,48 @@ class ProductType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'required' => true,
+                'label_attr' => [
+                    'class' => 'input'
+                ],
             ])
             ->add('price', MoneyType::class, [
                 'required' => true,
+                'label_attr' => [
+                    'class' => 'input'
+                ],
             ])
-            ->add('description')
+            ->add('description', TextareaType::class, [
+                'required' => false,
+                'label_attr' => [
+                    'class' => 'input'
+                ],
+            ])
             ->add('stock', IntegerType::class, [
                 'empty_data' => 0,
                 'attr' => [
                     'placeholder' => '0',
                 ],
                 'required' => true,
+                'label_attr' => [
+                    'class' => 'input'
+                ],
             ])
             ->add('productOptions', EntityType::class, [
                 'class' => ProductOption::class,
                 'multiple' => true,
                 'required' => false,
+                'label_attr' => [
+                    'class' => 'input'
+                ],
             ])
             ->add('productAttribute', EntityType::class, [
                 'class' => ProductAttribute::class,
                 'mapped' => false,
                 'multiple' => true,
                 'required' => false,
+                'label_attr' => [
+                    'class' => 'input'
+                ],
             ])
             ->add('productAttributeValues', CollectionType::class, [
                 'entry_type' => ProductAttributeValueType::class,
@@ -52,6 +73,9 @@ class ProductType extends AbstractType
                 'prototype' => true,
                 'by_reference' => false,
                 'required' => false,
+                'label_attr' => [
+                    'class' => 'input'
+                ],
             ])
         ;
     }

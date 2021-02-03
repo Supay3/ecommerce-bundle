@@ -1,33 +1,26 @@
 {{ form_start(form) }}
-    {{ form_label(form.name) }}
-    {{ form_widget(form.name) }}
+<div class="admin-form-wrapper">
+        {{ form_row(form.name) }}
+        {{ form_row(form.productOptions) }}
+        {{ form_row(form.stock) }}
 
-    {{ form_label(form.price) }}
-    {{ form_widget(form.price) }}
+        {{ form_row(form.price) }}
 
-    {{ form_label(form.description) }}
-    {{ form_widget(form.description) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.productAttribute) }}
+        <button type="button" class="btn btn-info mt-2 add_attribute_link" style="display: block" data-collection-holder-class=".productAttributeValues">Add attribute(s)</button>
+        {{ form_label(form.productAttributeValues) }}
 
-    {{ form_label(form.stock) }}
-    {{ form_widget(form.stock) }}
-
-    {{ form_label(form.productOptions) }}
-    {{ form_widget(form.productOptions) }}
-
-    {{ form_label(form.productAttribute) }}
-    {{ form_widget(form.productAttribute) }}
-    <button type="button" class="btn btn-info mt-2 add_attribute_link" style="display: block" data-collection-holder-class=".productAttributeValues">Add attribute(s)</button>
-    {{ form_label(form.productAttributeValues) }}
-
-    <ul class="productAttributeValues" data-prototype="{{ form_widget(form.productAttributeValues.vars.prototype)|e('html_attr') }}" data-widget-counter="{{ form.productAttributeValues|length }}">
-        {% for productAttributeValueField in form.productAttributeValues %}
-            <li>
-                {{ form_label(productAttributeValueField.textValue) }}
-                {{ form_widget(productAttributeValueField.textValue) }}
-                {{ form_widget(productAttributeValueField.attribute) }}
-            </li>
-        {% endfor %}
-    </ul>
-    <button class="btn">{{ button_label|default('Save') }}</button>
+        <ul class="productAttributeValues" data-prototype="{{ form_widget(form.productAttributeValues.vars.prototype)|e('html_attr') }}" data-widget-counter="{{ form.productAttributeValues|length }}">
+            {% for productAttributeValueField in form.productAttributeValues %}
+                <li>
+                    {{ form_label(productAttributeValueField.textValue) }}
+                    {{ form_widget(productAttributeValueField.textValue) }}
+                    {{ form_widget(productAttributeValueField.attribute) }}
+                </li>
+            {% endfor %}
+        </ul>
+        <button class="btn">{{ button_label|default('Save') }}</button>
+</div>
 {{ form_widget(form._token) }}
 {{ form_end(form, {'render_rest': false}) }}

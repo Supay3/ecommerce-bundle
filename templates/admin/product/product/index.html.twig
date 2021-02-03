@@ -28,8 +28,8 @@
                 <td>{{ product.updatedAt ? product.updatedAt|date('d/m/Y') : '' }}</td>
                 <td class="admin-actions">
                     <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_SHOW'), {'id': product.id}) }}">Details</a><!--
-                    --><a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_EDIT'), {'id': product.id}) }}">Edit</a><!--
-                    -->{{ include('admin/product/product/_delete_form.html.twig') }}
+                --><a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_EDIT'), {'id': product.id}) }}">Edit</a><!--
+                -->{{ include('admin/product/product/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}

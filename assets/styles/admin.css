@@ -159,11 +159,10 @@ main {
 
 /* We design the table */
 .admin-content-container {
-    margin: 50px 0 0 200px;
+    margin: 170px auto 0 auto;
 }
 
 .admin-table {
-    margin: 120px 60px 0 100px;
     background-color: white;
     border-radius: 5px;
     border-collapse: separate;
@@ -236,7 +235,7 @@ main {
     background: #db2828;
     border: none;
     font-size: inherit;
-    margin-left: -3px;
+    margin-left: -4px;
     vertical-align: baseline;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -275,7 +274,8 @@ main {
 }
 .admin-back {
     position: absolute;
-    margin: 60px 0 0 -100px;
+    top: 170px;
+    left: 410px;
 }
 
 .button-top.edit {
@@ -294,7 +294,33 @@ main {
 .button-top.edit:hover {
     background-color: #7A7A7A;
 }
-
+.admin-form-wrapper {
+    background: white;
+    padding: 20px 100px;
+    border-radius: 5px;
+    border: 1px #CACBCD solid;
+    width: 50vw;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.admin-form-wrapper label {
+    text-align: right;
+    display: inline-block;
+    padding-right: 8px;
+    width: 300px;
+}
+.admin-form-block label:first-child {
+    margin-top: 0;
+}
+ul {
+    list-style: none inside;
+    margin: 0;
+    padding: 0;
+}
+.required::after {
+    content: ' *';
+    color: red;
+}
 
 
 
