@@ -1,14 +1,19 @@
 {{ form_start(form) }}
-<div class="admin-form-wrapper">
-        {{ form_row(form.name) }}
-        {{ form_row(form.productOptions) }}
-        {{ form_row(form.stock) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.productOptions) }}
+    {{ form_row(form.stock) }}
 
-        {{ form_row(form.price) }}
+    {{ form_row(form.price) }}
+    {{ form_row(form.description) }}
+    <div class="form-group">
+        {{ form_label(form.productAttribute) }}
+        <div>
+            {{ form_widget(form.productAttribute) }}
+            <button type="button" class="add-attribute-link" style="display: block" data-collection-holder-class=".productAttributeValues">Add attribute(s)</button>
+        </div>
+    </div>
 
-        {{ form_row(form.description) }}
-        {{ form_row(form.productAttribute) }}
-        <button type="button" class="btn btn-info mt-2 add_attribute_link" style="display: block" data-collection-holder-class=".productAttributeValues">Add attribute(s)</button>
+    <div class="form-group">
         {{ form_label(form.productAttributeValues) }}
 
         <ul class="productAttributeValues" data-prototype="{{ form_widget(form.productAttributeValues.vars.prototype)|e('html_attr') }}" data-widget-counter="{{ form.productAttributeValues|length }}">
@@ -20,7 +25,7 @@
                 </li>
             {% endfor %}
         </ul>
-        <button class="btn">{{ button_label|default('Save') }}</button>
-</div>
-{{ form_widget(form._token) }}
+    </div>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_widget(form._token) }}
 {{ form_end(form, {'render_rest': false}) }}

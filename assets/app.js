@@ -15,9 +15,9 @@ import './bootstrap';
 import {AdminProductProductAttributeValueType} from "./admin/product/AdminProductProductAttributeValueType";
 import {CollectionBasicType} from "./admin/CollectionBasicType";
 
-if (document.querySelector('.add_attribute_link')) {
-    let adminProductProductAttributeValueType = new AdminProductProductAttributeValueType(document.querySelector('.add_attribute_link'), '#product_productAttribute');
+if (document.querySelector('.add-attribute-link')) {
+    let adminProductProductAttributeValueType = new AdminProductProductAttributeValueType(document.querySelector('.add-attribute-link'), '#product_productAttribute');
 }
-if (document.querySelector('.add_item_link')) {
-    let collectionBasicType = new CollectionBasicType(document.querySelector('.add_item_link'));
+if (document.querySelector('.add-item-link')) {
+    let collectionBasicType = new CollectionBasicType(document.querySelector('.add-item-link'));
 }

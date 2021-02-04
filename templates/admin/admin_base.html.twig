@@ -5,32 +5,28 @@
         <title>{% block title 'Admin - ' %}</title>
         {{ encore_entry_link_tags('app') }}
         {% block stylesheets %}{% endblock %}
-
+        {{ encore_entry_script_tags('app') }}
         {% block javascripts %}{% endblock %}
     </head>
-    <body>
+    <body class="admin-body">
         <header class="admin-header">
-            <div class="logo">
-                <h1>Logo</h1>
-            </div>
-            <nav class="navbar-top">
+            <h1>Logo</h1>
+            <nav class="admin-navbar-top">
                 <a href="#">Your website</a>
             </nav>
         </header>
-        <main>
-            <nav class="admin-sidebar">
-                <h3>Products</h3>
-                <div class="sidebar-list">
-                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_INDEX')) }}" class="sidebar-products">Products</a>
-                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_ATTRIBUTE_INDEX')) }}" class="sidebar-product-attributes">Product Attributes</a>
-                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_INDEX')) }}" class="sidebar-product-options">Product Options</a>
-                </div>
+        <aside class="admin-sidebar">
+            <h3>Products</h3>
+            <nav class="admin-navbar-side">
+                <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_INDEX')) }}" class="sidebar-products">Products</a>
+                <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_ATTRIBUTE_INDEX')) }}" class="sidebar-product-attributes">Product Attributes</a>
+                <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_INDEX')) }}" class="sidebar-product-options">Product Options</a>
             </nav>
-            <h2 class="admin-context-title">{% block admin_context_title %}{% endblock %}</h2>
+        </aside>
+        <main class="admin-main">
 
                 {% block body %}{% endblock %}
 
         </main>
-        {{ encore_entry_script_tags('app') }}
     </body>
 </html>

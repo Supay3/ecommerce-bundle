@@ -1,0 +1,342 @@
+/* We make the fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+/* We remove the browser basics */
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+html {
+    background: #EFEFEF;
+}
+
+/* We start designing the top bar */
+header.admin-header {
+    display: flex;
+    background: #FFF;
+}
+
+.logo {
+    display: flex;
+    min-width: 250px;
+    background: #2C2F3D;
+    height: 73px;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo h1 {
+    font-family: 'Source Code Pro', monospace;
+    color: #FFF;
+}
+nav.navbar-top {
+    width: 100vw;
+    display: flex;
+    height: 73px;
+    box-shadow: 0 4px 10px rgba(145, 145, 145, 0.36);
+}
+
+/* We design the sidebar */
+main {
+    display: flex;
+}
+
+.admin-sidebar {
+    border-top: 1px #EFEFEF solid;
+    padding: 10px 0 0 30px;
+    background: #2C2F3D;
+    width: 250px;
+    height: 100vh;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.admin-sidebar h3 {
+    color: #EFEFEF;
+    font-size: 23px;
+}
+
+.sidebar-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-list a {
+    text-decoration: none;
+    color: #B0B0B0;
+    margin: 10px 40px 0 10px;
+    font-size: 14px;
+    padding: 0.3em;
+    border: 1px solid transparent;
+    transition: .3s;
+}
+
+.sidebar-list a:hover,
+.sidebar-list a.active {
+    background: #EFEFEF;
+    border-radius: 3px;
+    font-weight: bold;
+    border: solid 1px #B0B0B0;
+    color: #7A7A7A;
+}
+
+.sidebar-list a:hover::before,
+.sidebar-list a.active::before {
+    opacity: 1;
+}
+
+.sidebar-list a::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    margin-top: -2px;
+    margin-right: 10px;
+    opacity: .5;
+    background: url('images/products.svg') center center / contain no-repeat;
+    transition: opacity .3s;
+}
+
+.sidebar-list .sidebar-products::before {
+    background-image: url('images/products.svg');
+}
+
+.sidebar-list .sidebar-product-attributes::before {
+    background-image: url('images/product_options.svg');
+}
+
+.sidebar-list .sidebar-product-options::before {
+    background-image: url('images/product_options.svg');
+}
+
+/* We design the content */
+.admin-context-title {
+    margin: 30px 0 0 300px;
+    font-size: 30px;
+    font-family: 'Source Sans Pro', sans-serif;
+    position: absolute;
+
+}
+
+.admin-context-title::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+    background: url('images/products.svg') center center / contain no-repeat;
+}
+
+/* We design the top right button */
+.button-top {
+    position: absolute;
+    top: 120px;
+    right: 60px;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: .3s;
+ }
+.button-top.create {
+    background-color: #42d69d;
+    color: #FFF;
+}
+.button-top.create::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 5px;
+    background: url('images/add_button.svg') center center / contain no-repeat;
+}
+.button-top.create:hover {
+    background-color: #33a578;
+}
+
+/* We design the table */
+.admin-content-container {
+    margin: 170px auto 0 auto;
+}
+
+.admin-table {
+    background-color: white;
+    border-radius: 5px;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 50vw;
+    text-align: left;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.admin-table thead th,
+.admin-table tbody td,
+.admin-table tbody th {
+    padding: 10px;
+}
+
+.admin-table .admin-table-head-index th,
+.admin-table .admin-table-body-index td {
+    border-top: 1px #CACBCD solid;
+    border-left: 1px #CACBCD solid;
+}
+
+.admin-table .admin-table-head-index tr:first-child th:first-child {
+    border-top-left-radius: 5px;
+}
+
+.admin-table .admin-table-head-index tr:first-child th:last-child {
+    border-top-right-radius: 5px;
+    border-right: 1px #CACBCD solid;
+}
+
+.admin-table .admin-table-body-index tr:last-child td:first-child {
+    border-bottom-left-radius: 5px;
+}
+
+.admin-table .admin-table-body-index tr:last-child td:last-child {
+    border-bottom-right-radius: 5px;
+}
+
+.admin-table .admin-table-body-index tr:last-child td {
+    border-bottom: 1px #CACBCD solid;
+}
+
+.admin-table .admin-table-body-index tr td:last-child {
+    border-right: 1px #CACBCD solid;
+}
+
+/* We design the admin-table buttons */
+.admin-actions a {
+    text-decoration: none;
+    color: #7A7A7A;
+    padding: 6px;
+    background: #EFEFEF;
+    transition: .3s;
+}
+.admin-actions a:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.admin-actions a:hover {
+    background: #7A7A7A;
+    color: #EFEFEF;
+}
+.admin-actions .admin-delete-form {
+    display: inline;
+}
+.admin-actions .admin-delete {
+    text-decoration: none;
+    color: #EFEFEF;
+    padding: 8px 6px 6px 6px;
+    background: #db2828;
+    border: none;
+    font-size: inherit;
+    margin-left: -4px;
+    vertical-align: baseline;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: .3s;
+    cursor: pointer;
+}
+.admin-actions .admin-delete:hover {
+    background: #a52424;
+}
+
+/* We design the admin-table-show */
+.admin-table.show th {
+    border-left: 1px #CACBCD solid;
+    border-bottom: 1px #CACBCD solid;
+    border-right: 1px #CACBCD solid;
+}
+.admin-table.show td {
+    border-right: 1px #CACBCD solid;
+    border-bottom: 1px #CACBCD solid;
+}
+.admin-table.show tr:first-child th,
+.admin-table.show tr:first-child td {
+    border-top: 1px #CACBCD solid;
+}
+.admin-table.show tr:first-child th {
+    border-top-left-radius: 5px;
+}
+.admin-table.show tr:last-child th {
+    border-bottom-left-radius: 5px;
+}
+.admin-table.show tr:first-child td {
+    border-top-right-radius: 5px;
+}
+.admin-table.show tr:last-child td {
+    border-bottom-right-radius: 5px;
+}
+.admin-back {
+    position: absolute;
+    top: 170px;
+    left: 410px;
+}
+
+.button-top.edit {
+    background-color: #B0B0B0;
+    color: #EFEFEF;
+}
+.button-top.edit::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 5px;
+    background: url('images/edit_button.svg') center center / contain no-repeat;
+}
+.button-top.edit:hover {
+    background-color: #7A7A7A;
+}
+.admin-form-wrapper {
+    background: white;
+    padding: 20px 100px;
+    border-radius: 5px;
+    border: 1px #CACBCD solid;
+    width: 50vw;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.admin-form-wrapper label {
+    text-align: right;
+    display: inline-block;
+    padding-right: 8px;
+    width: 50%;
+}
+.admin-form-block label:first-child {
+    margin-top: 0;
+}
+ul {
+    list-style: none inside;
+    margin: 0;
+    padding: 0;
+}
+.required::after {
+    content: ' *';
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

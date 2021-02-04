@@ -22,20 +22,29 @@ class ProductType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'required' => true,
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
                 'label_attr' => [
-                    'class' => 'input'
+                    'class' => 'admin-form-label',
                 ],
             ])
             ->add('price', MoneyType::class, [
                 'required' => true,
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
                 'label_attr' => [
-                    'class' => 'input'
+                    'class' => 'admin-form-label',
                 ],
             ])
             ->add('description', TextareaType::class, [
                 'required' => false,
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
                 'label_attr' => [
-                    'class' => 'input'
+                    'class' => 'admin-form-label',
                 ],
             ])
             ->add('stock', IntegerType::class, [
@@ -44,16 +53,22 @@ class ProductType extends AbstractType
                     'placeholder' => '0',
                 ],
                 'required' => true,
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
                 'label_attr' => [
-                    'class' => 'input'
+                    'class' => 'admin-form-label',
                 ],
             ])
             ->add('productOptions', EntityType::class, [
                 'class' => ProductOption::class,
                 'multiple' => true,
                 'required' => false,
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
                 'label_attr' => [
-                    'class' => 'input'
+                    'class' => 'admin-form-label',
                 ],
             ])
             ->add('productAttribute', EntityType::class, [
@@ -61,8 +76,11 @@ class ProductType extends AbstractType
                 'mapped' => false,
                 'multiple' => true,
                 'required' => false,
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
                 'label_attr' => [
-                    'class' => 'input'
+                    'class' => 'admin-form-label',
                 ],
             ])
             ->add('productAttributeValues', CollectionType::class, [
@@ -73,8 +91,11 @@ class ProductType extends AbstractType
                 'prototype' => true,
                 'by_reference' => false,
                 'required' => false,
+                'row_attr' => [
+                    'class' => 'form-group'
+                ],
                 'label_attr' => [
-                    'class' => 'input'
+                    'class' => 'admin-form-label',
                 ],
             ])
         ;
@@ -84,6 +105,9 @@ class ProductType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Product::class,
+            'attr' => [
+                'class' => 'admin-form',
+            ]
         ]);
     }
 }

@@ -4,7 +4,10 @@
 {% block admin_context_title 'Product Options' %}
 
 {% block body %}
-<section class="admin-content-container">
+    <header class="admin-content-header">
+        <h2>Product Options</h2>
+        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_NEW')) }}" class="admin-top-button">Create</a>
+    </header>
     <table class="admin-table">
         <thead class="admin-table-head-index">
         <tr>
@@ -20,9 +23,8 @@
                 <td>{{ product_option.name }}</td>
                 <td>{{ product_option.createdAt ? product_option.createdAt|date('d/m/Y') : '' }}</td>
                 <td>{{ product_option.updatedAt ? product_option.updatedAt|date('d/m/Y') : '' }}</td>
-                <td class="admin-actions">
-                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_SHOW'), {'id': product_option.id}) }}">Details</a><!--
-                    --><a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_EDIT'), {'id': product_option.id}) }}">Edit</a><!--
+                <td class="admin-table-actions">
+                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_EDIT'), {'id': product_option.id}) }}">Edit</a><!--
                     -->{{ include('admin/product/product_option/_delete_form.html.twig') }}
                 </td>
             </tr>
@@ -33,7 +35,4 @@
         {% endfor %}
         </tbody>
     </table>
-</section>
-
-    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_NEW')) }}" class="button-top create">Create</a>
 {% endblock %}

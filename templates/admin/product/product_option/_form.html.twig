@@ -9,7 +9,7 @@
     {% endfor %}
 </ul>
 
-<button type="button" class="add_item_link btn btn-info" data-collection-holder-class=".productOptionValues">Add a product option</button>
+<button type="button" class="add-item-link" data-collection-holder-class=".productOptionValues">Add a product option</button>
 {{ form_widget(form._token) }}
 <button class="btn btn-success mt-2 float-right">{{ button_label|default('Save') }}</button>
 {{ form_end(form, {'render_rest': false}) }}
