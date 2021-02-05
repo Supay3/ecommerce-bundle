@@ -27,6 +27,9 @@ class ProductAttributeType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ProductAttribute::class,
+            'attr' => [
+                'class' => 'admin-form'
+            ]
         ]);
     }
 }

@@ -1,4 +1,7 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {% form_theme form 'admin/form/admin_form_theme.html.twig' %}
+    {{ form_row(form.name) }}
+    {{ form_row(form.type) }}
+    {{ form_row(form.storageType) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

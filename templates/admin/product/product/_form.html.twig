@@ -17,6 +17,6 @@
 
     {{ form_row(form.productAttributeValues) }}
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button>{{ button_label|default('Save') }}</button>
     {{ form_widget(form._token) }}
 {{ form_end(form, {'render_rest': false}) }}
