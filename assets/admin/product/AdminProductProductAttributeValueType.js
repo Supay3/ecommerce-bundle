@@ -67,7 +67,7 @@ export class AdminProductProductAttributeValueType extends AbstractCollectionTyp
      */
     changeLabelForExistingAttributeValue (attributeValueChildrenOption, attributeValueChildren) {
         attributeValueChildren.getElementsByTagName('label').forEach(function (label) {
-            if (label.textContent === 'Text value') {
+            if (label.textContent === 'Textvalue') {
                 label.textContent = attributeValueChildrenOption.textContent;
             }
         });
@@ -114,10 +114,11 @@ export class AdminProductProductAttributeValueType extends AbstractCollectionTyp
      */
     createNewProductAttributeValueForm(currentlySelectedOption) {
         let newProductAttributeValueForm = this.newProductAttributeValueForm
-            .replace('Text value', currentlySelectedOption.textContent)
+            .replace('Textvalue', currentlySelectedOption.textContent)
             .replaceAll('__name__', this.Counter["data-widget-counter"].valueOf())
         ;
         let newProductAttributeValueLi = document.createElement('li');
+        newProductAttributeValueLi.setAttribute('class', 'list-element');
         newProductAttributeValueLi.innerHTML = newProductAttributeValueForm;
         let options = newProductAttributeValueLi.getElementsByTagName('option');
         for (let i = 0; i < options.length; i++) {

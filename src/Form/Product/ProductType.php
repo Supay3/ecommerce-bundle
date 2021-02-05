@@ -22,30 +22,12 @@ class ProductType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'required' => true,
-                'row_attr' => [
-                    'class' => 'form-group'
-                ],
-                'label_attr' => [
-                    'class' => 'admin-form-label',
-                ],
             ])
             ->add('price', MoneyType::class, [
                 'required' => true,
-                'row_attr' => [
-                    'class' => 'form-group'
-                ],
-                'label_attr' => [
-                    'class' => 'admin-form-label',
-                ],
             ])
             ->add('description', TextareaType::class, [
                 'required' => false,
-                'row_attr' => [
-                    'class' => 'form-group'
-                ],
-                'label_attr' => [
-                    'class' => 'admin-form-label',
-                ],
             ])
             ->add('stock', IntegerType::class, [
                 'empty_data' => 0,
@@ -53,50 +35,27 @@ class ProductType extends AbstractType
                     'placeholder' => '0',
                 ],
                 'required' => true,
-                'row_attr' => [
-                    'class' => 'form-group'
-                ],
-                'label_attr' => [
-                    'class' => 'admin-form-label',
-                ],
             ])
             ->add('productOptions', EntityType::class, [
                 'class' => ProductOption::class,
                 'multiple' => true,
                 'required' => false,
-                'row_attr' => [
-                    'class' => 'form-group'
-                ],
-                'label_attr' => [
-                    'class' => 'admin-form-label',
-                ],
             ])
             ->add('productAttribute', EntityType::class, [
                 'class' => ProductAttribute::class,
                 'mapped' => false,
                 'multiple' => true,
                 'required' => false,
-                'row_attr' => [
-                    'class' => 'form-group'
-                ],
-                'label_attr' => [
-                    'class' => 'admin-form-label',
-                ],
             ])
             ->add('productAttributeValues', CollectionType::class, [
                 'entry_type' => ProductAttributeValueType::class,
-                'entry_options' => ['label' => false],
+                'entry_options' => ['label' => true],
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,
                 'by_reference' => false,
                 'required' => false,
-                'row_attr' => [
-                    'class' => 'form-group'
-                ],
-                'label_attr' => [
-                    'class' => 'admin-form-label',
-                ],
+                'block_name' => 'product_attribute_values',
             ])
         ;
     }
@@ -107,7 +66,7 @@ class ProductType extends AbstractType
             'data_class' => Product::class,
             'attr' => [
                 'class' => 'admin-form',
-            ]
+            ],
         ]);
     }
 }

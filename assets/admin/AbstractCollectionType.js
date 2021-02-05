@@ -38,7 +38,7 @@ export class AbstractCollectionType {
      */
     createRemoveButton () {
         let removeFormButton = document.createElement('button');
-        removeFormButton.className = 'btn btn-danger remove-form-button';
+        removeFormButton.className = 'remove-form-button';
         removeFormButton.setAttribute('type', 'button');
         removeFormButton.append('Remove');
         return removeFormButton;

@@ -1,3 +1,5 @@
+{{ dump(form) }}
+{% form_theme form 'admin/form/admin_form_theme.html.twig' %}
 {{ form_start(form) }}
     {{ form_row(form.name) }}
     {{ form_row(form.productOptions) }}
@@ -5,27 +7,16 @@
 
     {{ form_row(form.price) }}
     {{ form_row(form.description) }}
-    <div class="form-group">
+
+    <div class="form-group select-field">
         {{ form_label(form.productAttribute) }}
-        <div>
-            {{ form_widget(form.productAttribute) }}
-            <button type="button" class="add-attribute-link" style="display: block" data-collection-holder-class=".productAttributeValues">Add attribute(s)</button>
-        </div>
+        {{ form_widget(form.productAttribute) }}
+        <button type="button" class="add-attribute-link" data-collection-holder-class=".productAttributeValues">Add attribute(s)</button>
     </div>
+    {% form_theme form 'admin/form/product_attribute_value_form_theme.html.twig' %}
 
-    <div class="form-group">
-        {{ form_label(form.productAttributeValues) }}
+    {{ form_row(form.productAttributeValues) }}
 
-        <ul class="productAttributeValues" data-prototype="{{ form_widget(form.productAttributeValues.vars.prototype)|e('html_attr') }}" data-widget-counter="{{ form.productAttributeValues|length }}">
-            {% for productAttributeValueField in form.productAttributeValues %}
-                <li>
-                    {{ form_label(productAttributeValueField.textValue) }}
-                    {{ form_widget(productAttributeValueField.textValue) }}
-                    {{ form_widget(productAttributeValueField.attribute) }}
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
     <button class="btn">{{ button_label|default('Save') }}</button>
     {{ form_widget(form._token) }}
 {{ form_end(form, {'render_rest': false}) }}

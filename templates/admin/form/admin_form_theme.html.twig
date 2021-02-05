@@ -1,0 +1,43 @@
+{% block money_row %}
+    <div class="admin-form-group money-field">
+        <label for="{{ form.vars.id }}" class="admin-form-label {{ form.vars.required ? 'required' }}">{{ form.vars.name }}</label>
+        <input type="text" id="{{ form.vars.id }}" name="{{ form.vars.full_name }}" {{ form.vars.required ? 'required="required"' }} {% if form.vars.attr is not empty and form.vars.attr.placeholder is not empty %}placeholder="{{ form.vars.attr.placeholder }}"{% endif %} value="{{ form.vars.value }}">
+        <span class="admin-input-money">{{ form.vars.money_pattern | replace({'{{ widget }}': ''}) }}</span>
+    </div>
+{% endblock %}
+
+{% block text_row %}
+    <div class="admin-form-group text-field">
+        <label for="{{ form.vars.id }}" class="admin-form-label {{ form.vars.required ? 'required' }}">{{ form.vars.name }}</label>
+        <input type="text" id="{{ form.vars.id }}" name="{{ form.vars.full_name }}" {{ form.vars.required ? 'required="required"' }} {% if form.vars.attr is not empty and form.vars.attr.placeholder is not empty %}placeholder="{{ form.vars.attr.placeholder }}"{% endif %} value="{{ form.vars.value }}">
+    </div>
+{% endblock %}
+
+{% block textarea_row %}
+    <div class="admin-form-group textarea-field">
+        <label for="{{ form.vars.id }}" class="admin-form-label label-top {{ form.vars.required ? 'required' }}">{{ form.vars.name }}</label>
+        <textarea id="{{ form.vars.id }}" name="{{ form.vars.full_name }}" {{ form.vars.required ? 'required="required"' }} {% if form.vars.attr is not empty and form.vars.attr.placeholder is not empty %}placeholder="{{ form.vars.attr.placeholder }}"{% endif %}>{{ form.vars.value | capitalize }}</textarea>
+    </div>
+{% endblock %}
+
+{% block entity_row %}
+    <div class="admin-form-group select-field">
+        <label for="{{ form.vars.id }}" class="admin-form-label label-top {{ form.vars.required ? 'required' }}">{{ form.vars.name }}</label>
+        <select id="{{ form.vars.id }}" name="{{ form.vars.full_name }}" {{ form.vars.required ? 'required="required"' }} {{ form.vars.multiple ? 'multiple="multiple"' }} {% if form.vars.attr is not empty and form.vars.attr.hidden is not empty %} {{ form.vars.attr.hidden ? 'hidden="hidden"' }}{% endif %}>
+            {% for choice in form.vars.choices %}
+                <option value="{{ choice.value }}" {% if choice is selectedchoice(form.vars.value) %}selected="selected"{% endif %}>{{ choice.data.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+{% endblock %}
+
+{% block entity_label %}
+    <label for="{{ form.vars.id }}" class="admin-form-label label-top {{ form.vars.required ? 'required' }}">{{ form.vars.name }}</label>
+{% endblock %}
+
+{% block integer_row %}
+    <div class="admin-form-group integer-field">
+        <label for="{{ form.vars.id }}" class="admin-form-label {{ form.vars.required ? 'required' }}">{{ form.vars.name }}</label>
+        <input type="number" id="{{ form.vars.id }}" name="{{ form.vars.full_name }}" {{ form.vars.required ? 'required="required"' }} {% if form.vars.attr is not empty and form.vars.attr.placeholder is not empty %}placeholder="{{ form.vars.attr.placeholder }}"{% endif %} value="{{ form.vars.value }}">
+    </div>
+{% endblock %}
