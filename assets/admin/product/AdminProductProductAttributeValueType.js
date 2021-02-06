@@ -34,7 +34,7 @@ export class AdminProductProductAttributeValueType extends AbstractCollectionTyp
 
     /**
      * If some Product ProductAttributeValue already exists for this Product, seeks for their linked ProductAttribute
-     * in attempt to change their label, set the selected attribute on the Product ProductAttribute and add a delete button
+     * in attempt to set the selected attribute on the Product ProductAttribute and add a delete button
      * for each of the Product ProductAttributeValue
      */
     seekForOptions () {
@@ -50,7 +50,6 @@ export class AdminProductProductAttributeValueType extends AbstractCollectionTyp
                     if (attributeValueChildrenOption.hasAttribute('selected')) {
                         this.Counter.counter.push(attributeValueChildrenOption.value);
                         this.SelectedOption.option = attributeValueChildrenOption;
-                        this.changeLabelForExistingAttributeValue(attributeValueChildrenOption, attributeValueChildren);
                         this.setSelectedOnProductAttributeOptions(attributeValueChildrenOption);
                     }
                 }
@@ -59,19 +58,6 @@ export class AdminProductProductAttributeValueType extends AbstractCollectionTyp
         }
     }
 
-    /**
-     * Set the ProductAttributeValue label to the linked ProductAttribute name
-     *
-     * @param {HTMLElement} attributeValueChildrenOption The productAttributeValue option which contains the label to set
-     * @param {HTMLElement} attributeValueChildren The productAttributeValue child element which contains the label to change
-     */
-    changeLabelForExistingAttributeValue (attributeValueChildrenOption, attributeValueChildren) {
-        attributeValueChildren.getElementsByTagName('label').forEach(function (label) {
-            if (label.textContent === 'Textvalue') {
-                label.textContent = attributeValueChildrenOption.textContent;
-            }
-        });
-    }
 
     /**
      * Compare the value of the ProductAttribute options and the ProductAttributeValue ProductAttribute that is selected
@@ -114,7 +100,7 @@ export class AdminProductProductAttributeValueType extends AbstractCollectionTyp
      */
     createNewProductAttributeValueForm(currentlySelectedOption) {
         let newProductAttributeValueForm = this.newProductAttributeValueForm
-            .replace('Textvalue', currentlySelectedOption.textContent)
+            .replace('Your Value', currentlySelectedOption.textContent)
             .replaceAll('__name__', this.Counter["data-widget-counter"].valueOf())
         ;
         let newProductAttributeValueLi = document.createElement('li');

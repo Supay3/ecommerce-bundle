@@ -14,12 +14,8 @@ class ProductOptionType extends AbstractType
     {
         $builder
             ->add('name')
-        ;
-
-        $builder
             ->add('productOptionValues', CollectionType::class, [
                 'entry_type' => ProductOptionValueType::class,
-                'entry_options' => ['label' => false],
                 'allow_add' => true,
                 'allow_delete' => true,
                 'delete_empty' => true,

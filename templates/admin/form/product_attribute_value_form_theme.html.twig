@@ -1,31 +1,55 @@
 {% block _product_product_attribute_values_row %}
     <div class="form-group form-attribute">
-        <label class="admin-form-label label-top {{ form.vars.required ? 'required' }}">{{ form.vars.name | capitalize }}</label>
-        <ul class="productAttributeValues attributes-list" data-prototype="{{ form_widget(form.vars.prototype) | e('html_attr') }}" data-widget-counter="{{ form | length }}">
+        <label class="admin-form-label label-top {{ form.vars.required ? 'required' }}">
+            {% if form.vars.label is not null %}
+                {{ form.vars.label }}
+            {% else %}
+                {{ form.vars.name | u.snake.replace('_', ' ') | title }}
+            {% endif %}
+        </label>
+        <ul class="productAttributeValues attributes-list"
+            data-prototype="{{ form_widget(form.vars.prototype) | e('html_attr') }}"
+            data-widget-counter="{{ form | length }}">
             {% for fields in form %}
                 <li class="list-element">
                     {{ form_widget(fields) }}
                 </li>
             {% endfor %}
-
         </ul>
     </div>
 {% endblock %}
 
 {% block _product_product_attribute_values_entry_widget %}
-    {{ form_row(form.textValue) }}
-    {{ form_row(form.attribute) }}
+        {{ form_row(form.textValue) }}
+        {{ form_row(form.attribute) }}
 {% endblock %}
 
 {% block _product_product_attribute_values_entry_textValue_row %}
-    <label for="{{ form.vars.id }}" class="admin-form-label {{ form.vars.required ? 'required' }}">{{ form.vars.name | capitalize }}</label>
+    <label for="{{ form.vars.id }}" class="admin-form-label {{ form.vars.required ? 'required' }}">
+        {% if form.vars.label is not null %}
+            {{ form.vars.label }}
+        {% elseif form.parent.vars.data.attribute is defined and form.parent.vars.data.attribute.name is defined %}
+            {{ form.parent.vars.data.attribute.name }}
+        {% else %}
+            {{ 'Your Value' }}
+        {% endif %}
+    </label>
     <input type="text" id="{{ form.vars.id }}" name="{{ form.vars.full_name }}" {{ form.vars.required ? 'required="required"' }} value="{{ form.vars.value }}">
 {% endblock %}
 
 {% block _product_product_attribute_values_entry_attribute_row %}
-    <select id="{{ form.vars.id }}" name="{{ form.vars.full_name }}" {{ form.vars.multiple ? 'multiple="multiple"' }} {% if form.vars.attr is not empty and form.vars.attr.hidden is not empty %}{{ form.vars.attr.hidden ? 'hidden="hidden"' }}{% endif %} {{ form.vars.required ? 'required="required"' }}>
+    <select id="{{ form.vars.id }}"
+            name="{{ form.vars.full_name }}"
+            {{ form.vars.multiple ? 'multiple="multiple"' }}
+            {% if form.vars.attr is not empty and form.vars.attr.hidden is not empty %}
+                {{ form.vars.attr.hidden ? 'hidden="hidden"' }}
+            {% endif %}
+            {{ form.vars.required ? 'required="required"' }}>
         {% for choice in form.vars.choices %}
-            <option value="{{ choice.value }}" {% if choice is selectedchoice(form.vars.value) %}selected="selected"{% endif %}>{{ choice.data.name }}</option>
+            <option value="{{ choice.value }}"
+                    {% if choice is selectedchoice(form.vars.value) %}selected="selected"{% endif %}>
+                {{ choice.data.name }}
+            </option>
         {% endfor %}
     </select>
 {% endblock %}

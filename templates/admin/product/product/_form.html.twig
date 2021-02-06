@@ -1,10 +1,10 @@
 {{ dump(form) }}
 {% form_theme form 'admin/form/admin_form_theme.html.twig' %}
 {{ form_start(form) }}
+
     {{ form_row(form.name) }}
     {{ form_row(form.productOptions) }}
     {{ form_row(form.stock) }}
-
     {{ form_row(form.price) }}
     {{ form_row(form.description) }}
 
