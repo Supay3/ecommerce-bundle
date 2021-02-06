@@ -1,4 +1,3 @@
-{{ dump(form) }}
 {% form_theme form 'admin/form/admin_form_theme.html.twig' %}
 {{ form_start(form) }}
 
@@ -8,7 +7,7 @@
     {{ form_row(form.price) }}
     {{ form_row(form.description) }}
 
-    <div class="form-group select-field">
+    <div class="admin-form-group admin-select-field">
         {{ form_label(form.productAttribute) }}
         {{ form_widget(form.productAttribute) }}
         <button type="button" class="add-attribute-link" data-collection-holder-class=".productAttributeValues">Add attribute(s)</button>
@@ -17,6 +16,6 @@
 
     {{ form_row(form.productAttributeValues) }}
 
-    <button>{{ button_label|default('Save') }}</button>
+    <button class="admin-save">{{ button_label|default('Save') }}</button>
     {{ form_widget(form._token) }}
 {{ form_end(form, {'render_rest': false}) }}

@@ -1,26 +1,8 @@
 {# MoneyType #}
 {% block money_row %}
-    <div class="admin-form-group money-field">
-        <label for="{{ form.vars.id }}" class="admin-form-label {{ form.vars.required ? 'required' }}">
-            {% if form.vars.label is not null %}
-                {{ form.vars.label }}
-            {% else %}
-                {{ form.vars.name | u.snake.replace('_', ' ') | title }}
-            {% endif %}
-        </label>
-        <input type="text" id="{{ form.vars.id }}" name="{{ form.vars.full_name }}" {{ form.vars.required ? 'required="required"' }}
-                {% if form.vars.attr is not empty and form.vars.attr.placeholder is defined %}
-                    placeholder="{{ form.vars.attr.placeholder }}"
-                {% endif %}
-               value="{{ form.vars.value }}">
-        <span class="admin-input-money">{{ form.vars.money_pattern | replace({'{{ widget }}': ''}) }}</span>
-    </div>
-{% endblock %}
-
-{# TextType #}
-{% block text_row %}
-    <div class="admin-form-group text-field">
-        <label for="{{ form.vars.id }}" class="admin-form-label {{ form.vars.required ? 'required' }}">
+    <div class="admin-form-group admin-money-field">
+        <label for="{{ form.vars.id }}"
+               class="admin-form-label {{ form.vars.required ? 'required' }}">
             {% if form.vars.label is not null %}
                 {{ form.vars.label }}
             {% else %}
@@ -29,7 +11,33 @@
         </label>
         <input type="text"
                id="{{ form.vars.id }}"
-               name="{{ form.vars.full_name }}" {{ form.vars.required ? 'required="required"' }}
+               class="admin-input-money"
+               name="{{ form.vars.full_name }}"
+                {{ form.vars.required ? 'required="required"' }}
+                {% if form.vars.attr is not empty and form.vars.attr.placeholder is defined %}
+                    placeholder="{{ form.vars.attr.placeholder }}"
+                {% endif %}
+               value="{{ form.vars.value }}">
+        <span class="admin-currency">{{ form.vars.money_pattern | replace({'{{ widget }}': ''}) }}</span>
+    </div>
+{% endblock %}
+
+{# TextType #}
+{% block text_row %}
+    <div class="admin-form-group admin-text-field">
+        <label for="{{ form.vars.id }}"
+               class="admin-form-label {{ form.vars.required ? 'required' }}">
+            {% if form.vars.label is not null %}
+                {{ form.vars.label }}
+            {% else %}
+                {{ form.vars.name | u.snake.replace('_', ' ') | title }}
+            {% endif %}
+        </label>
+        <input type="text"
+               id="{{ form.vars.id }}"
+               class="admin-input-text"
+               name="{{ form.vars.full_name }}"
+                {{ form.vars.required ? 'required="required"' }}
                 {% if form.vars.attr is not empty and form.vars.attr.placeholder is defined %}
                     placeholder="{{ form.vars.attr.placeholder }}"
                 {% endif %}
@@ -39,8 +47,8 @@
 
 {# TextareaType #}
 {% block textarea_row %}
-    <div class="admin-form-group textarea-field">
-        <label for="{{ form.vars.id }}" class="admin-form-label label-top {{ form.vars.required ? 'required' }}">
+    <div class="admin-form-group admin-textarea-field">
+        <label for="{{ form.vars.id }}" class="admin-form-label admin-label-top {{ form.vars.required ? 'required' }}">
             {% if form.vars.label is not null %}
                 {{ form.vars.label }}
             {% else %}
@@ -48,7 +56,9 @@
             {% endif %}
         </label>
         <textarea id="{{ form.vars.id }}"
-                  name="{{ form.vars.full_name }}" {{ form.vars.required ? 'required="required"' }}
+                  class="admin-input-textarea"
+                  name="{{ form.vars.full_name }}"
+                {{ form.vars.required ? 'required="required"' }}
                 {% if form.vars.attr is not empty and form.vars.attr.placeholder is defined %}
                     placeholder="{{ form.vars.attr.placeholder }}"
                 {% endif %}>{#
@@ -59,8 +69,9 @@
 
 {# EntityType #}
 {% block entity_row %}
-    <div class="admin-form-group select-field">
-        <label for="{{ form.vars.id }}" class="admin-form-label label-top {{ form.vars.required ? 'required' }}">
+    <div class="admin-form-group admin-select-field">
+        <label for="{{ form.vars.id }}"
+               class="admin-form-label admin-label-top {{ form.vars.required ? 'required' }}">
             {% if form.vars.label is not null %}
                 {{ form.vars.label }}
             {% else %}
@@ -68,6 +79,7 @@
             {% endif %}
         </label>
         <select id="{{ form.vars.id }}"
+                class="admin-input-select"
                 name="{{ form.vars.full_name }}"
                 {{ form.vars.required ? 'required="required"' }}
                 {{ form.vars.multiple ? 'multiple="multiple"' }}
@@ -76,6 +88,7 @@
                 {% endif %}>
             {% for choice in form.vars.choices %}
                 <option value="{{ choice.value }}"
+                        class="admin-option"
                         {% if choice is selectedchoice(form.vars.value) %}
                             selected="selected"
                         {% endif %}>
@@ -87,7 +100,8 @@
 {% endblock %}
 
 {% block entity_label %}
-    <label for="{{ form.vars.id }}" class="admin-form-label label-top {{ form.vars.required ? 'required' }}">
+    <label for="{{ form.vars.id }}"
+           class="admin-form-label admin-label-top {{ form.vars.required ? 'required' }}">
         {% if form.vars.label is not null %}
             {{ form.vars.label }}
         {% else %}
@@ -98,6 +112,7 @@
 
 {% block entity_widget %}
     <select id="{{ form.vars.id }}"
+            class="admin-select-entity"
             name="{{ form.vars.full_name }}"
             {{ form.vars.required ? 'required="required"' }}
             {{ form.vars.multiple ? 'multiple="multiple"' }}
@@ -106,6 +121,7 @@
             {% endif %}>
         {% for choice in form.vars.choices %}
             <option value="{{ choice.value }}"
+                    class="admin-option"
                     {% if choice is selectedchoice(form.vars.value) %}
                         selected="selected"
                     {% endif %}>
@@ -117,17 +133,23 @@
 
 {# IntegerType #}
 {% block integer_row %}
-    <div class="admin-form-group integer-field">
-        <label for="{{ form.vars.id }}" class="admin-form-label {{ form.vars.required ? 'required' }}">
+    <div class="admin-form-group admin-integer-field">
+        <label for="{{ form.vars.id }}"
+               class="admin-form-label {{ form.vars.required ? 'required' }}">
             {% if form.vars.label is not null %}
                 {{ form.vars.label }}
             {% else %}
                 {{ form.vars.name | u.snake.replace('_', ' ') | title }}
             {% endif %}
         </label>
-        <input type="number" id="{{ form.vars.id }}"
-               name="{{ form.vars.full_name }}" {{ form.vars.required ? 'required="required"' }}
-                {% if form.vars.attr is not empty and form.vars.attr.placeholder is defined %}placeholder="{{ form.vars.attr.placeholder }}"{% endif %}
+        <input type="number"
+               class="admin-input-integer"
+               id="{{ form.vars.id }}"
+               name="{{ form.vars.full_name }}"
+                {{ form.vars.required ? 'required="required"' }}
+                {% if form.vars.attr is not empty and form.vars.attr.placeholder is defined %}
+                    placeholder="{{ form.vars.attr.placeholder }}"
+                {% endif %}
                value="{{ form.vars.value }}">
     </div>
 {% endblock %}

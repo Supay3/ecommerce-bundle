@@ -8,15 +8,15 @@
     margin: 0;
     font-family: "Source Sans Pro", sans-serif;
 }
-h1 {
+.admin-h1 {
     font-size: 2rem;
     color: #697082;
 }
-h3 {
+.admin-h3 {
     color: #707380;
     font-size: 1.3rem;
 }
-html {
+.admin-html {
     background: #E3E7EC;
     font-size: 16px;
 }
@@ -145,39 +145,35 @@ html {
 /* We design the edit/new form */
 .admin-form {
     background: #F7FAFC;
+    padding: .313rem 0;
 }
 .admin-form-group {
     display: flex;
     align-items: center;
-    padding: 10px 0;
-}
-.form-group {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
+    padding: .625rem 0;
 }
 .admin-form-label {
     flex: 30% 0 0;
     text-align: right;
     margin-right: .7rem;
 }
-.label-top,
+.admin-label-top,
 .add-attribute-link {
     align-self: flex-start;
 }
-.attributes-list {
+.admin-attributes-list {
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
 }
-.list-element {
+.admin-list-attribute-element {
     list-style: none inside;
     margin: 0;
     padding: 0;
     display: flex;
 }
-.list-element label {
+.admin-list-attribute-element label {
     flex: 40% 0 0;
     text-align: right;
     margin-right: .7rem;
@@ -186,10 +182,23 @@ html {
     content: ' *';
     color: red;
 }
-.admin-form input {
-    height: 30px;
-    max-width: 350px;
+.admin-input-text,
+.admin-input-integer,
+.admin-input-money,
+.admin-input-attribute {
+    height: 1.875rem;
+}
+.admin-input-text,
+.admin-input-integer,
+.admin-input-textarea {
+    max-width: 21.875rem;
     flex: 0 0 55%;
+}
+.admin-input-textarea {
+    min-height: 9.375rem;
+}
+.admin-input-money {
+    flex: 0 0 13%;
 }
 
 

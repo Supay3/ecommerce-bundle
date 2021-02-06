@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="admin-html">
     <head>
         <meta charset="UTF-8">
         <title>{% block title 'Admin - ' %}</title>
@@ -10,13 +10,13 @@
     </head>
     <body class="admin-body">
         <header class="admin-header">
-            <h1>Logo</h1>
+            <h1 class="admin-h1">Logo</h1>
             <nav class="admin-navbar-top">
                 <a href="#">Your website</a>
             </nav>
         </header>
         <aside class="admin-sidebar">
-            <h3>Products</h3>
+            <h3 class="admin-h3">Products</h3>
             <nav class="admin-navbar-side">
                 <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_INDEX')) }}" class="sidebar-products">Products</a>
                 <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_ATTRIBUTE_INDEX')) }}" class="sidebar-product-attributes">Product Attributes</a>

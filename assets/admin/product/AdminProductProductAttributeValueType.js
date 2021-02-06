@@ -104,7 +104,7 @@ export class AdminProductProductAttributeValueType extends AbstractCollectionTyp
             .replaceAll('__name__', this.Counter["data-widget-counter"].valueOf())
         ;
         let newProductAttributeValueLi = document.createElement('li');
-        newProductAttributeValueLi.setAttribute('class', 'list-element');
+        newProductAttributeValueLi.setAttribute('class', 'admin-list-attribute-element');
         newProductAttributeValueLi.innerHTML = newProductAttributeValueForm;
         let options = newProductAttributeValueLi.getElementsByTagName('option');
         for (let i = 0; i < options.length; i++) {
