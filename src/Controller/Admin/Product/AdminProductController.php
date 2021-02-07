@@ -19,6 +19,9 @@ class AdminProductController extends AbstractController
     {
         return $this->render('admin/product/product/index.html.twig', [
             'products' => $productRepository->findAll(),
+            'path' => $this->generateUrl(RouteName::ADMIN_PRODUCT_NEW),
+            'path_label' => 'Create',
+            'header_title' => 'Products',
         ]);
     }
 
@@ -40,6 +43,9 @@ class AdminProductController extends AbstractController
         return $this->render('admin/product/product/new.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
+            'path' => $this->generateUrl(RouteName::ADMIN_PRODUCT_INDEX),
+            'header_title' => 'New Product',
+            'button' => true,
         ]);
     }
 
@@ -67,6 +73,9 @@ class AdminProductController extends AbstractController
         return $this->render('admin/product/product/edit.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
+            'button' => true,
+            'button_label' => 'Update',
+            'path' => $this->generateUrl(RouteName::ADMIN_PRODUCT_INDEX),
         ]);
     }
 

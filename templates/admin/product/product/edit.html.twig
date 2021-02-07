@@ -1,14 +1,8 @@
 {% extends 'admin/admin_base.html.twig' %}
 
 {% block title %}Edit Product{% endblock %}
-{% block admin_context_title 'Edit Product' %}
 
 {% block body %}
-    <header class="admin-content-header">
-        <h2>Edit "{{ form.vars.data.name }}"</h2>
-        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_INDEX')) }}" class="admin-top-button">back to list</a>
-    </header>
-
-    {{ include('admin/product/product/_form.html.twig', {'button_label': 'Update'}) }}
-
+    {{ include('admin/_admin_header.html.twig') }}
+    {{ include('admin/product/product/_form.html.twig') }}
 {% endblock %}

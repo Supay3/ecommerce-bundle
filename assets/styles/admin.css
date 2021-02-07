@@ -84,7 +84,7 @@
     padding: 0 1rem;
     border-bottom: #E3E7EC 0.063rem solid;
 }
-.admin-top-button {
+.admin-content-header-top-button {
     text-decoration: none;
     background: #6B82DD;
     color: white;
@@ -92,7 +92,7 @@
     padding: .313rem;
     transition: .3s;
 }
-.admin-top-button:hover {
+.admin-content-header-top-button:hover {
     background: #5569b5;
 }
 .admin-table {
@@ -200,7 +200,10 @@
 .admin-input-money {
     flex: 0 0 13%;
 }
-
+.admin-list {
+    display: flex;
+    flex-direction: column;
+}
 
 
 

@@ -36,6 +36,7 @@ export class CollectionBasicType extends AbstractCollectionType {
         counter++;
         this.ul.setAttribute('data-widget-counter', counter);
         let newLi = document.createElement('li');
+        newLi.setAttribute('class', 'admin-list-collection-element');
         newLi.innerHTML = newFormGroup;
         this.ul.append(newLi);
         this.addFormRemoveButton(newLi);

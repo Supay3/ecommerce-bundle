@@ -9,6 +9,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JetBrains\PhpStorm\Pure;
+use Symfony\Component\String\AbstractString;
+use Symfony\Component\String\UnicodeString;
+use function Symfony\Component\String\u;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -69,7 +72,6 @@ class Product
         $this->created_at = new DateTime();
     }
 
-    #[Pure]
     public function __toString(): string
     {
         return $this->getName();
@@ -114,6 +116,11 @@ class Product
         $this->description = $description;
 
         return $this;
+    }
+
+    public function getDescriptionExcerpt(): AbstractString|UnicodeString
+    {
+        return u($this->getDescription())->truncate(60, '...', false);
     }
 
     public function getStock(): ?int

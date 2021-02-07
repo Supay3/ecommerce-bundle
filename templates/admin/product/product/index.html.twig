@@ -3,10 +3,7 @@
 {% block title %}Product index{% endblock %}
 
 {% block body %}
-    <header class="admin-content-header">
-        <h2>Products</h2>
-        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_NEW')) }}" class="admin-top-button">Create</a>
-    </header>
+    {{ include('admin/_admin_header.html.twig') }}
     <table class="admin-table">
         <thead class="admin-table-head-index">
         <tr>
@@ -24,7 +21,7 @@
             <tr>
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }} €</td>
-                <td>{{ product.description }}</td>
+                <td>{{ product.descriptionExcerpt }}</td>
                 <td>{{ product.stock }}</td>
                 <td>{{ product.createdAt ? product.createdAt|date('d/m/Y') : '' }}</td>
                 <td>{{ product.updatedAt ? product.updatedAt|date('d/m/Y') : '' }}</td>

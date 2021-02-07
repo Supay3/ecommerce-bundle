@@ -19,6 +19,9 @@ class ProductAttributeController extends AbstractController
     {
         return $this->render('admin/product/product_attribute/index.html.twig', [
             'product_attributes' => $productAttributeRepository->findAll(),
+            'path' => $this->generateUrl(RouteName::ADMIN_PRODUCT_ATTRIBUTE_NEW),
+            'path_label' => 'Create',
+            'header_title' => 'Product Attributes',
         ]);
     }
 
@@ -40,6 +43,9 @@ class ProductAttributeController extends AbstractController
         return $this->render('admin/product/product_attribute/new.html.twig', [
             'product_attribute' => $productAttribute,
             'form' => $form->createView(),
+            'path' => $this->generateUrl(RouteName::ADMIN_PRODUCT_ATTRIBUTE_INDEX),
+            'header_title' => 'New Product Attribute',
+            'button' => true,
         ]);
     }
 
@@ -66,6 +72,9 @@ class ProductAttributeController extends AbstractController
         return $this->render('admin/product/product_attribute/edit.html.twig', [
             'product_attribute' => $productAttribute,
             'form' => $form->createView(),
+            'button' => true,
+            'button_label' => 'Update',
+            'path' => $this->generateUrl(RouteName::ADMIN_PRODUCT_ATTRIBUTE_INDEX),
         ]);
     }
 

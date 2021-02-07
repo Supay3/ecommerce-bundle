@@ -131,6 +131,38 @@
     </select>
 {% endblock %}
 
+{# CollectionType #}
+{% block collection_row %}
+    <div class="admin-form-group admin-collection-field">
+        <label for="{{ form.vars.id }}"
+               class="admin-form-label admin-label-top {{ form.vars.required ? 'required' }}">
+            {% if form.vars.label is not null %}
+                {{ form.vars.label }}
+            {% else %}
+                {{ form.vars.name | u.snake.replace('_', ' ') | title }}
+            {% endif %}
+        </label>
+        <div class="admin-list">
+            <ul class="admin-collection-list {{ form.vars.name }}"
+                data-prototype="{{ form_row(form.vars.prototype)|e('html_attr') }}"
+                data-widget-counter="{{ form.children|length }}">
+                {% for fields in form.children %}
+                    <li class="admin-list-collection-element">
+                        {{ form_row(fields) }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button" class="add-item-link" data-collection-holder-class=".{{ form.vars.name }}">Add an item</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block collection_entry_row %}
+    {% for children in form.children %}
+        {{ form_row(children) }}
+    {% endfor %}
+{% endblock %}
+
 {# IntegerType #}
 {% block integer_row %}
     <div class="admin-form-group admin-integer-field">

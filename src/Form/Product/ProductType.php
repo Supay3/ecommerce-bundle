@@ -66,6 +66,7 @@ class ProductType extends AbstractType
             'data_class' => Product::class,
             'attr' => [
                 'class' => 'admin-form',
+                'id' => 'product-form',
             ],
         ]);
     }

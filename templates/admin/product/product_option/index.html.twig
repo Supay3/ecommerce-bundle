@@ -4,10 +4,7 @@
 {% block admin_context_title 'Product Options' %}
 
 {% block body %}
-    <header class="admin-content-header">
-        <h2>Product Options</h2>
-        <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_NEW')) }}" class="admin-top-button">Create</a>
-    </header>
+    {{ include('admin/_admin_header.html.twig') }}
     <table class="admin-table">
         <thead class="admin-table-head-index">
         <tr>

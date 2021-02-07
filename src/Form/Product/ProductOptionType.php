@@ -29,6 +29,10 @@ class ProductOptionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ProductOption::class,
+            'attr' => [
+                'class' => 'admin-form',
+                'id' => 'product-option-form',
+            ],
         ]);
     }
 }

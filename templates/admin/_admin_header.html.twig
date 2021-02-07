@@ -1,0 +1,15 @@
+<header class="admin-content-header">
+    {% if form is defined and header_title is not defined %}
+        <h2 class="admin-h2">Edit "{{ form.vars.data.name }}"</h2>
+    {% elseif header_title is defined %}
+        <h2 class="admin-h2">{{ header_title }}</h2>
+    {% endif %}
+    <div class="admin-content-header-link">
+        {% if button is defined and button is same as true %}
+            <button type="submit" class="admin-save" form="{{ form.vars.attr.id }}">{{ button_label|default('Save') }}</button>
+        {% endif %}
+        {% if path is defined %}
+            <a href="{{ path }}" class="admin-content-header-top-button">{{ path_label|default('Back to list') }}</a>
+        {% endif %}
+    </div>
+</header>
