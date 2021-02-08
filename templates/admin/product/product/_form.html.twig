@@ -1,29 +1,8 @@
-{{ dump(form) }}
 {% form_theme form 'admin/form/admin_form_theme.html.twig' %}
 {{ form_start(form) }}
 
-    {{ form_row(form.name) }}
-    {{ form_row(form.productOptions) }}
-    {{ form_row(form.stock) }}
-    {{ form_row(form.price) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.productAttribute) }}
+    {% for children in form.children %}
+        {{ form_row(children) }}
+    {% endfor %}
 
-    {#
-    <div class="admin-form-group admin-select-attribute-field">
-        {{ form_label(form.productAttribute) }}
-        <div class="admin-select-attribute">
-            {{ form_widget(form.productAttribute) }}
-            <button type="button"
-                    class="add-attribute-link"
-                    data-collection-holder-class=".productAttributeValues">
-                Add attribute(s)
-            </button>
-        </div>
-    </div>
-    #}
-
-    {{ form_row(form.productAttributeValues) }}
-
-    {{ form_widget(form._token) }}
-{{ form_end(form, {'render_rest': false}) }}
+{{ form_end(form) }}

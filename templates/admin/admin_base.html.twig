@@ -2,10 +2,13 @@
 <html lang="en" class="admin-html">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title 'Admin - ' %}</title>
+        <title>Admin - {% block title %}{% endblock %}</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         {{ encore_entry_link_tags('app') }}
-        {% block stylesheets %}{% endblock %}
         {{ encore_entry_script_tags('app') }}
+        {% block stylesheets %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </head>
     <body class="admin-body">

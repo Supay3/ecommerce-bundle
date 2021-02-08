@@ -6,16 +6,16 @@ export class AbstractCollectionType {
     /**
      * Creates a remove button for a Collection element
      *
-     * @param {HTMLElement} formLi The Collection element that requires a remove button
+     * @param {HTMLElement} formElement The Collection element that requires a remove button
      * @param {HTMLDataElement} option Specify in case you need a remove button for a ProductAttribute, if specified this will also delete the
      * selected attribute from the Product ProductAttribute option linked to the Product ProductAttributeValue that is deleted,
      * needs the counter array and the id of the Product ProductAttribute list to work
      * @param {array} counter An array of the selected Product ProductAttribute options
      * @param {string} listId The id of the ProductAttribute list, needs to be in querySelector format ('#' at the beginning)
      */
-    addFormRemoveButton (formLi, option = null, counter = null, listId = '') {
+    addFormRemoveButton (formElement, option = null, counter = null, listId = '') {
         let removeFormButton = this.createRemoveButton();
-        formLi.append(removeFormButton);
+        formElement.append(removeFormButton);
         removeFormButton.addEventListener('click', function () {
             if (option !== null && counter !== null && listId !== '') {
                 let optionList = document.querySelector(listId);

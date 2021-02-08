@@ -26,13 +26,13 @@
 {% block text_row %}
     <div class="admin-form-group admin-text-field">
         <label for="{{ form.vars.id }}"
-               class="admin-form-label {{ form.vars.required ? 'required' }}">
-            {% if form.vars.label is not null %}
-                {{ form.vars.label }}
-            {% else %}
-                {{ form.vars.name | u.snake.replace('_', ' ') | title }}
-            {% endif %}
-        </label>
+               class="admin-form-label {{ form.vars.required ? 'required' }}">{#
+            #}{% if form.vars.label is not null %}{#
+                #}{{ form.vars.label }}{#
+            #}{% else %}{#
+                #}{{ form.vars.name | u.snake.replace('_', ' ') | title }}{#
+            #}{% endif %}{#
+        #}</label>
         <input type="text"
                id="{{ form.vars.id }}"
                class="admin-input-text"
@@ -101,7 +101,7 @@
 
 {% block entity_label %}
     <label for="{{ form.vars.id }}"
-           class="admin-form-label admin-label-top {{ form.vars.required ? 'required' }}">
+           class="admin-form-label {{ form.vars.required ? 'required' }}">
         {% if form.vars.label is not null %}
             {{ form.vars.label }}
         {% else %}
@@ -112,7 +112,7 @@
 
 {% block entity_widget %}
     <select id="{{ form.vars.id }}"
-            class="admin-select-entity"
+            class="admin-input-select"
             name="{{ form.vars.full_name }}"
             {{ form.vars.required ? 'required="required"' }}
             {{ form.vars.multiple ? 'multiple="multiple"' }}
@@ -143,20 +143,24 @@
             {% endif %}
         </label>
         <div class="admin-list">
-            <ul class="admin-collection-list {{ form.vars.name }}"
+            <div class="admin-collection-list {{ form.vars.name }}"
                 data-prototype="{{ form_row(form.vars.prototype)|e('html_attr') }}"
                 data-widget-counter="{{ form.children|length }}">
                 {% for fields in form.children %}
-                    <li class="admin-list-collection-element">
-                        {% for children in fields.children %}
-                            {{ form_row(children) }}
-                        {% endfor %}
-                    </li>
+                    <div class="admin-list-collection-element">
+                        {{ form_row(fields) }}
+                    </div>
                 {% endfor %}
-            </ul>
+            </div>
             <button type="button" class="add-item-link" data-collection-holder-class=".{{ form.vars.name }}">Add an item</button>
         </div>
     </div>
+{% endblock %}
+
+{% block collection_entry_row %}
+    {% for children in form.children %}
+        {{ form_row(children) }}
+    {% endfor %}
 {% endblock %}
 
 {# IntegerType #}
@@ -206,16 +210,20 @@
                 {{ form.vars.name | u.snake.replace('_', ' ') | title }}
             {% endif %}
         </label>
-        <ul class="productAttributeValues admin-attributes-list"
+        <div class="productAttributeValues admin-attributes-list"
             data-prototype="{{ form_row(form.vars.prototype) | e('html_attr') }}"
             data-widget-counter="{{ form | length }}">
             {% for fields in form %}
-                <li class="admin-list-attribute-element">
-                    {% for children in fields.children %}
-                        {{ form_row(children) }}
-                    {% endfor %}
-                </li>
+                <div class="admin-list-attribute-element">
+                    {{ form_row(fields) }}
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
+{% endblock %}
+
+{% block _product_product_attribute_values_entry_row %}
+    {% for children in form.children %}
+        {{ form_row(children) }}
+    {% endfor %}
 {% endblock %}

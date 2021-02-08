@@ -11,34 +11,34 @@ export class CollectionBasicType extends AbstractCollectionType {
     constructor(button) {
         super();
         this.addButton = button;
-        this.ul = document.querySelector(this.addButton.getAttribute('data-collection-holder-class'));
-        this.addDeleteLinkToExistingLi();
+        this.list = document.querySelector(this.addButton.getAttribute('data-collection-holder-class'));
+        this.addDeleteLinkToExistingDiv();
 
         // Events
         this.addButton.addEventListener('click', () => {
-            this.createNewLi();
+            this.createNewDiv();
         });
     }
 
-    addDeleteLinkToExistingLi() {
-        if (this.ul.children.length > 0) {
-            for (let i = 0; i < this.ul.children.length; i++) {
-                let ulChildren = this.ul.children[i];
-                this.addFormRemoveButton(ulChildren);
+    addDeleteLinkToExistingDiv() {
+        if (this.list.children.length > 0) {
+            for (let i = 0; i < this.list.children.length; i++) {
+                let listChildren = this.list.children[i];
+                this.addFormRemoveButton(listChildren);
             }
         }
     }
 
-    createNewLi() {
-        let counter = this.ul.getAttribute('data-widget-counter').valueOf();
-        let newFormGroup = this.ul.getAttribute('data-prototype');
+    createNewDiv() {
+        let counter = this.list.getAttribute('data-widget-counter').valueOf();
+        let newFormGroup = this.list.getAttribute('data-prototype');
         newFormGroup = newFormGroup.replaceAll('__name__', counter);
         counter++;
-        this.ul.setAttribute('data-widget-counter', counter);
-        let newLi = document.createElement('li');
-        newLi.setAttribute('class', 'admin-list-collection-element');
-        newLi.innerHTML = newFormGroup;
-        this.ul.append(newLi);
-        this.addFormRemoveButton(newLi);
+        this.list.setAttribute('data-widget-counter', counter);
+        let newDiv = document.createElement('div');
+        newDiv.setAttribute('class', 'admin-list-collection-element');
+        newDiv.innerHTML = newFormGroup;
+        this.list.append(newDiv);
+        this.addFormRemoveButton(newDiv);
     }
 }

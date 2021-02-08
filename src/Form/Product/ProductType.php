@@ -23,11 +23,16 @@ class ProductType extends AbstractType
             ->add('name', TextType::class, [
                 'required' => true,
             ])
-            ->add('price', MoneyType::class, [
-                'required' => true,
-            ])
             ->add('description', TextareaType::class, [
                 'required' => false,
+            ])
+            ->add('productOptions', EntityType::class, [
+                'class' => ProductOption::class,
+                'multiple' => true,
+                'required' => false,
+            ])
+            ->add('price', MoneyType::class, [
+                'required' => true,
             ])
             ->add('stock', IntegerType::class, [
                 'empty_data' => 0,
@@ -35,11 +40,6 @@ class ProductType extends AbstractType
                     'placeholder' => '0',
                 ],
                 'required' => true,
-            ])
-            ->add('productOptions', EntityType::class, [
-                'class' => ProductOption::class,
-                'multiple' => true,
-                'required' => false,
             ])
             ->add('productAttribute', EntityType::class, [
                 'class' => ProductAttribute::class,

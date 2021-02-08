@@ -50,12 +50,27 @@ export class AdminProductProductAttributeValueType extends AbstractCollectionTyp
                     if (attributeValueChildrenOption.hasAttribute('selected')) {
                         this.Counter.counter.push(attributeValueChildrenOption.value);
                         this.SelectedOption.option = attributeValueChildrenOption;
+                        this.changeLabelForExistingAttributeValue(attributeValueChildrenOption, attributeValueChildren);
                         this.setSelectedOnProductAttributeOptions(attributeValueChildrenOption);
                     }
                 }
                 this.addFormRemoveButton(attributeValueChildren, this.SelectedOption.option, this.Counter.counter, this.listId);
             }
         }
+    }
+
+    /**
+     * Set the ProductAttributeValue label to the linked ProductAttribute name
+     *
+     * @param {HTMLElement} attributeValueChildrenOption The productAttributeValue option which contains the label to set
+     * @param {HTMLElement} attributeValueChildren The productAttributeValue child element which contains the label to change
+     */
+    changeLabelForExistingAttributeValue (attributeValueChildrenOption, attributeValueChildren) {
+        attributeValueChildren.getElementsByTagName('label').forEach(function (label) {
+            if (label.textContent === 'Text Value') {
+                label.textContent = attributeValueChildrenOption.textContent;
+            }
+        });
     }
 
 
@@ -96,24 +111,24 @@ export class AdminProductProductAttributeValueType extends AbstractCollectionTyp
     /**
      *
      * @param {HTMLDataElement} currentlySelectedOption
-     * @returns {HTMLLIElement}
+     * @returns {HTMLDivElement}
      */
     createNewProductAttributeValueForm(currentlySelectedOption) {
         let newProductAttributeValueForm = this.newProductAttributeValueForm
-            .replace('Your Value', currentlySelectedOption.textContent)
+            .replace('Text Value', currentlySelectedOption.textContent)
             .replaceAll('__name__', this.Counter["data-widget-counter"].valueOf())
         ;
-        let newProductAttributeValueLi = document.createElement('li');
-        newProductAttributeValueLi.setAttribute('class', 'admin-list-attribute-element');
-        newProductAttributeValueLi.innerHTML = newProductAttributeValueForm;
-        let options = newProductAttributeValueLi.getElementsByTagName('option');
+        let newProductAttributeValueDiv = document.createElement('div');
+        newProductAttributeValueDiv.setAttribute('class', 'admin-list-attribute-element');
+        newProductAttributeValueDiv.innerHTML = newProductAttributeValueForm;
+        let options = newProductAttributeValueDiv.getElementsByTagName('option');
         for (let i = 0; i < options.length; i++) {
             let option = options[i];
             if (option.value === currentlySelectedOption.value) {
                 option.setAttribute('selected', 'selected');
             }
         }
-        this.addFormRemoveButton(newProductAttributeValueLi, currentlySelectedOption, this.Counter.counter, this.listId);
-        return newProductAttributeValueLi;
+        this.addFormRemoveButton(newProductAttributeValueDiv, currentlySelectedOption, this.Counter.counter, this.listId);
+        return newProductAttributeValueDiv;
     }
 }
