@@ -148,19 +148,15 @@
                 data-widget-counter="{{ form.children|length }}">
                 {% for fields in form.children %}
                     <li class="admin-list-collection-element">
-                        {{ form_row(fields) }}
+                        {% for children in fields.children %}
+                            {{ form_row(children) }}
+                        {% endfor %}
                     </li>
                 {% endfor %}
             </ul>
             <button type="button" class="add-item-link" data-collection-holder-class=".{{ form.vars.name }}">Add an item</button>
         </div>
     </div>
-{% endblock %}
-
-{% block collection_entry_row %}
-    {% for children in form.children %}
-        {{ form_row(children) }}
-    {% endfor %}
 {% endblock %}
 
 {# IntegerType #}
@@ -183,5 +179,43 @@
                     placeholder="{{ form.vars.attr.placeholder }}"
                 {% endif %}
                value="{{ form.vars.value }}">
+    </div>
+{% endblock %}
+
+{# ProductAttributeValue #}
+{% block _product_productAttribute_row %}
+    <div class="admin-form-group admin-select-attribute-field">
+        {{ form_label(form) }}
+        <div class="admin-select-attribute">
+            {{ form_widget(form) }}
+            <button type="button"
+                    class="add-attribute-link"
+                    data-collection-holder-class=".productAttributeValues">
+                Add attribute(s)
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block _product_product_attribute_values_row %}
+    <div class="admin-form-group admin-form-attribute">
+        <label class="admin-form-label admin-label-top {{ form.vars.required ? 'required' }}">
+            {% if form.vars.label is not null %}
+                {{ form.vars.label }}
+            {% else %}
+                {{ form.vars.name | u.snake.replace('_', ' ') | title }}
+            {% endif %}
+        </label>
+        <ul class="productAttributeValues admin-attributes-list"
+            data-prototype="{{ form_row(form.vars.prototype) | e('html_attr') }}"
+            data-widget-counter="{{ form | length }}">
+            {% for fields in form %}
+                <li class="admin-list-attribute-element">
+                    {% for children in fields.children %}
+                        {{ form_row(children) }}
+                    {% endfor %}
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}

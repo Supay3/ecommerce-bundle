@@ -185,12 +185,28 @@
 .admin-input-text,
 .admin-input-integer,
 .admin-input-money,
+.admin-input-attribute,
 .admin-input-attribute {
     height: 1.875rem;
 }
 .admin-input-text,
 .admin-input-integer,
+.admin-input-money,
+.admin-input-attribute,
+.admin-input-attribute,
 .admin-input-textarea {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 1px #E3E7EC;
+    font: 400 14px 'Source Sans Pro';
+    padding-left: 5px;
+}
+.admin-input-text,
+.admin-input-integer,
+.admin-input-textarea,
+.admin-input-attribute,
+.admin-input-select,
+.admin-select-attribute {
     max-width: 21.875rem;
     flex: 0 0 55%;
 }

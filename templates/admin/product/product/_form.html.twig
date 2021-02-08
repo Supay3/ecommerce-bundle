@@ -1,3 +1,4 @@
+{{ dump(form) }}
 {% form_theme form 'admin/form/admin_form_theme.html.twig' %}
 {{ form_start(form) }}
 
@@ -6,13 +7,21 @@
     {{ form_row(form.stock) }}
     {{ form_row(form.price) }}
     {{ form_row(form.description) }}
+    {{ form_row(form.productAttribute) }}
 
-    <div class="admin-form-group admin-select-field">
+    {#
+    <div class="admin-form-group admin-select-attribute-field">
         {{ form_label(form.productAttribute) }}
-        {{ form_widget(form.productAttribute) }}
-        <button type="button" class="add-attribute-link" data-collection-holder-class=".productAttributeValues">Add attribute(s)</button>
+        <div class="admin-select-attribute">
+            {{ form_widget(form.productAttribute) }}
+            <button type="button"
+                    class="add-attribute-link"
+                    data-collection-holder-class=".productAttributeValues">
+                Add attribute(s)
+            </button>
+        </div>
     </div>
-    {% form_theme form 'admin/form/product_attribute_value_form_theme.html.twig' %}
+    #}
 
     {{ form_row(form.productAttributeValues) }}
 
