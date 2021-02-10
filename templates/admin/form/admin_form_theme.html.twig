@@ -101,7 +101,7 @@
 
 {% block entity_label %}
     <label for="{{ form.vars.id }}"
-           class="admin-form-label {{ form.vars.required ? 'required' }}">
+           class="admin-form-label admin-label-top {{ form.vars.required ? 'required' }}">
         {% if form.vars.label is not null %}
             {{ form.vars.label }}
         {% else %}
