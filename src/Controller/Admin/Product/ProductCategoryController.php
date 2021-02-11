@@ -21,7 +21,7 @@ class ProductCategoryController extends AbstractController
             'product_categories' => $productCategoryRepository->findAll(),
             'path' => $this->generateUrl(RouteName::ADMIN_PRODUCT_CATEGORY_NEW),
             'path_label' => 'Create',
-            'header_title' => 'Product Category',
+            'header_title' => 'Product Categories',
         ]);
     }
 

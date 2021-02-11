@@ -231,6 +231,13 @@
 .admin-select-field .select2 {
     flex: 0 0 40%;
 }
+.admin-input-money,
+.admin-input-text,
+.admin-input-textarea,
+.admin-input-integer {
+    padding: 0 .313rem;
+    font: 400 15px 'Source Sans Pro';
+}
 .required::after {
     content: '*';
     color: red;
