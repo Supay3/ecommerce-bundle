@@ -1,0 +1,36 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title 'Product Categories' %}
+
+{% block body %}
+    {{ include('admin/_admin_header.html.twig') }}
+    <table class="admin-table">
+        <thead class="admin-table-head-index">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="admin-table-body-index">
+        {% for product_category in product_categories %}
+            <tr>
+                <td>{{ product_category.name }}</td>
+                <td>{{ product_category.description }}</td>
+                <td>{{ product_category.createdAt ? product_category.createdAt|date('d/m/Y') : '' }}</td>
+                <td>{{ product_category.updatedAt ? product_category.updatedAt|date('d/m/Y') : '' }}</td>
+                <td class="admin-table-actions">
+                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_CATEGORY_EDIT'), {'id': product_category.id}) }}">Edit</a><!--
+                -->{{ include('admin/product/product_category/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

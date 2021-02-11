@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admin/product_attribute')]
-class ProductAttributeController extends AbstractController
+class AdminProductAttributeController extends AbstractController
 {
     #[Route('/', name: RouteName::ADMIN_PRODUCT_ATTRIBUTE_INDEX, methods: ['GET'])]
     public function index(ProductAttributeRepository $productAttributeRepository): Response

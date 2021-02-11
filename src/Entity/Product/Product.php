@@ -65,6 +65,11 @@ class Product
      */
     private Collection $productOptions;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=ProductCategory::class, inversedBy="products")
+     */
+    private $productCategory;
+
     public function __construct()
     {
         $this->productAttributeValues = new ArrayCollection();
@@ -212,6 +217,18 @@ class Product
         if ($this->productOptions->removeElement($productOption)) {
             $productOption->removeProduct($this);
         }
+
+        return $this;
+    }
+
+    public function getProductCategory(): ?ProductCategory
+    {
+        return $this->productCategory;
+    }
+
+    public function setProductCategory(?ProductCategory $productCategory): self
+    {
+        $this->productCategory = $productCategory;
 
         return $this;
     }

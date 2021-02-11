@@ -32,4 +32,11 @@ class RouteName
     public const ADMIN_PRODUCT_ATTRIBUTE_SHOW = 'admin_product_attribute_show';
     public const ADMIN_PRODUCT_ATTRIBUTE_EDIT = 'admin_product_attribute_edit';
     public const ADMIN_PRODUCT_ATTRIBUTE_DELETE = 'admin_product_attribute_delete';
+
+    // Routes for administration product category
+    public const ADMIN_PRODUCT_CATEGORY_INDEX = 'admin_product_category_index';
+    public const ADMIN_PRODUCT_CATEGORY_NEW = 'admin_product_category_new';
+    public const ADMIN_PRODUCT_CATEGORY_SHOW = 'admin_product_category_show';
+    public const ADMIN_PRODUCT_CATEGORY_EDIT = 'admin_product_category_edit';
+    public const ADMIN_PRODUCT_CATEGORY_DELETE = 'admin_product_category_delete';
 }

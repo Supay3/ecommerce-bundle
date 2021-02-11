@@ -21,9 +21,10 @@
         <aside class="admin-sidebar">
             <h3 class="admin-h3">Products</h3>
             <nav class="admin-navbar-side">
-                <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_INDEX')) }}" class="sidebar-products">Products</a>
-                <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_ATTRIBUTE_INDEX')) }}" class="sidebar-product-attributes">Product Attributes</a>
-                <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_INDEX')) }}" class="sidebar-product-options">Product Options</a>
+                <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_INDEX')) }}" class="sidebar-products {% if header_title is defined and header_title == 'Products' %}active{% endif %}">Products</a>
+                <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_ATTRIBUTE_INDEX')) }}" class="sidebar-product-attributes {% if header_title is defined and header_title == 'Product Attributes' %}active{% endif %}">Product Attributes</a>
+                <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_INDEX')) }}" class="sidebar-product-options {% if header_title is defined and header_title == 'Product Options' %}active{% endif %}">Product Options</a>
+                <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_CATEGORY_INDEX')) }}" class="sidebar-product-category {% if header_title is defined and header_title == 'Product Category' %}active{% endif %}">Product Category</a>
             </nav>
         </aside>
         <main class="admin-main">

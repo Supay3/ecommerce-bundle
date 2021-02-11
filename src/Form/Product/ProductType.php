@@ -4,6 +4,7 @@ namespace App\Form\Product;
 
 use App\Entity\Product\Product;
 use App\Entity\Product\ProductAttribute;
+use App\Entity\Product\ProductCategory;
 use App\Entity\Product\ProductOption;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -30,6 +31,11 @@ class ProductType extends AbstractType
                 'class' => ProductOption::class,
                 'multiple' => true,
                 'required' => false,
+            ])
+            ->add('productCategory', EntityType::class, [
+                'class' => ProductCategory::class,
+                'required' => false,
+                'placeholder' => 'You can choose a Category',
             ])
             ->add('price', MoneyType::class, [
                 'required' => true,

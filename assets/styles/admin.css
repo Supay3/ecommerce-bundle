@@ -43,10 +43,17 @@
     display: flex;
     flex-direction: column;
 }
+.admin-navbar-side .active {
+    color: #6d707c;
+}
 .admin-navbar-side a {
     margin-top: 0.625rem;
     text-decoration: none;
     color: #8D909C;
+    transition: .3s;
+}
+.admin-navbar-side a:hover {
+    color: #6d707c;
 }
 .admin-navbar-side a::before {
     content: '';

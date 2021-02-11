@@ -86,6 +86,13 @@
                 {% if form.vars.attr is not empty and form.vars.attr.hidden is defined %}
                     {{ form.vars.attr.hidden ? 'hidden="hidden"' }}
                 {% endif %}>
+            {% if form.vars.required == false %}
+                <option value="">
+                    {% if form.vars.placeholder is defined and form.vars.placeholder is not null %}
+                        {{ form.vars.placeholder }}
+                    {% endif %}
+                </option>
+            {% endif %}
             {% for choice in form.vars.choices %}
                 <option value="{{ choice.value }}"
                         class="admin-option"
