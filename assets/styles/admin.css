@@ -158,99 +158,113 @@
     color: #aa2222;
 }
 
-/* We design the edit/new form */
+/* We design the form */
 .admin-form {
     background: #F7FAFC;
-    padding: .313rem 0;
+    padding: 1rem;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 .admin-form-group {
     display: flex;
+    padding-bottom: 1rem;
     align-items: center;
-    padding: .625rem 0;
 }
 .admin-form-label {
     flex: 30% 0 0;
     text-align: right;
-    margin-right: .7rem;
+    margin-right: .313rem;
 }
 .admin-label-top {
     align-self: flex-start;
 }
-.add-attribute-link {
-    padding: .3rem .3rem;
-}
-.required::after {
-    content: ' *';
-    color: red;
-}
-.admin-input-text,
-.admin-input-integer,
-.admin-input-money,
-.admin-input-attribute {
-    height: 1.875rem;
-}
-.admin-input-text,
-.admin-input-integer,
-.admin-input-money,
-.admin-input-attribute,
-.admin-input-textarea,
-.admin-input-select {
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 0 1px 1px #E3E7EC;
-    font: 400 14px 'Source Sans Pro';
-    padding-left: 5px;
-}
-.admin-input-text,
-.admin-input-integer,
-.admin-input-textarea,
-.admin-select-attribute,
-.admin-input-select,
-.admin-select-attribute {
-    max-width: 21.875rem;
-    flex: 0 0 55%;
-}
-.admin-input-textarea {
-    min-height: 9.375rem;
-}
-.admin-input-money {
-    flex: 0 0 13%;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-.admin-select-field .admin-form-label {
+.admin-select-field .admin-label-top,
+.admin-select-attribute-field .admin-label-top {
     margin-top: 5px;
 }
-.admin-currency {
-    height: 30px;
-    padding: 5px 5px 0 5px;
-    background: #EFEFEF;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+.admin-input-text,
+.admin-input-textarea,
+.admin-input-integer,
+.admin-input-select,
+.admin-select-attribute,
+.admin-attributes-list,
+.admin-list {
+    flex: 0 0 40%;
+}
+.admin-input-text,
+.admin-input-textarea,
+.admin-input-integer,
+.admin-input-money,
+.admin-select-field .select2,
+.admin-select-attribute {
+    min-height: 30px;
+    border: none;
+    border-radius: 5px;
     box-shadow: 0 0 1px 1px #E3E7EC;
 }
-/* We design the product Attribute Value form */
-.admin-form-attribute span {
-    display: none;
+.admin-select-field .select2 .select2-selection,
+.admin-select-attribute-field .select2 .select2-selection {
+    min-height: 30px;
+    border: none;
+    border-radius: 5px;
+    padding-bottom: 3px;
 }
-.admin-select-attribute .select2-selection {
+.admin-select-attribute-field .select2 .select2-selection {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    border: none;
 }
-.admin-select-field .select2-selection {
-    border: none;
-    box-shadow: 0 0 1px 1px #E3E7EC;
+.admin-input-money {
+    flex: 0 0 18%;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
 }
+.admin-input-textarea {
+    height: 200px;
+}
+.admin-select-field .select2 {
+    flex: 0 0 40%;
+}
+.required::after {
+    content: '*';
+    color: red;
+    margin-left: 3px;
+}
+
+/* We design the attribute list */
+.admin-select-attribute {
+    display: flex;
+}
+.admin-select-attribute .select2 {
+    flex: 1;
+}
+.add-attribute-link {
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: .3s;
+    cursor: pointer;
+}
+.add-attribute-link:hover {
+    background: #c6c4c4;
+    color: white;
+}
+
+/* We design the attribute value field */
 .admin-list-attribute-element {
     display: flex;
-    width: 100%;
-    align-items: center;
+}
+.admin-list-attribute-element .admin-form-group {
+    flex: 30% 0 0;
+}
+.admin-list-attribute-element .admin-select-field {
+    display: none;
+}
+.admin-list-attribute-element .admin-form-group {
+    flex: 10;
 }
 .remove-form-button {
-    flex: 0 0 10%;
-    height: 50%;
-    border-radius: 5px;
+    flex: 1;
+    margin-bottom: 1rem;
     background: none;
     border: none;
     font: inherit;
@@ -263,82 +277,43 @@
 .remove-form-button:hover {
     color: #aa2222;
 }
-.admin-list-attribute-element input {
-    display: block;
-}
-.admin-attributes-list {
-    max-width: 33.3rem;
-    flex: 0 0 55%;
-}
-.admin-attributes-list .admin-form-group {
-    display: flex;
-    flex: 75% 0 0;
-}
-.admin-attributes-list .admin-select-field {
-    display: none;
-}
-.admin-select-attribute {
-    display: flex;
-    box-shadow: 0 0 1px 1px #E3E7EC;
-    border-radius: 5px;
-}
-#product_productAttribute {
-    flex: 2;
-}
-.add-attribute-link {
-    border: none;
-    cursor: pointer;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    transition: .3s;
-}
-.add-attribute-link:hover {
-    background: #c6c4c4;
-    color: white;
-}
-.admin-select-attribute-field .admin-label-top {
-    margin-top: 5px;
-}
-/* We design the admin-list */
+
+/* We design the collections */
 .admin-list-collection-element {
     display: flex;
-    align-items: center;
-}
-.admin-list {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
 }
 .admin-list-collection-element .admin-form-group {
-    padding-top: 0;
-    padding-bottom: 1.2rem;
-    flex: 40.2% 0 0;
-}
-.admin-list-collection-element .remove-form-button {
-    padding-bottom: 1.2rem;
-}
-.admin-list-collection-element .admin-form-label {
-    flex: 1;
+    flex: 10;
 }
 .add-item-link {
     border: none;
     background: inherit;
-    width: 120px;
-    font: 400 16px 'Source Sans Pro';
-    color: #6B82DD;
+    font: inherit;
     cursor: pointer;
     padding: 0;
+    margin-left: 10px;
+    color: #6B82DD;
     transition: .3s;
 }
 .add-item-link::before {
     content: '+';
-    height: 1rem;
-    width: 1rem;
-    margin-right: .5rem;
+    margin-right: 5px;
 }
 .add-item-link:hover {
     color: #5569b5;
 }
+
+.admin-currency {
+    padding: .313rem;
+    background: #E4E4E4;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 0 1px 1px #E3E7EC;
+}
+
+
+
+
 
 
 
