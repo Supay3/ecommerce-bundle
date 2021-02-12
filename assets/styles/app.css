@@ -1,0 +1,117 @@
+/* We make the fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+/* We remove the browser basics */
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+.main-body {
+    font: 400 16px 'Source Sans Pro';
+    line-height: 1.5;
+    display: grid;
+    grid-template: 10vh repeat(2, 1fr) / repeat(2, 1fr);
+}
+
+/* We design the header */
+.header-top {
+    background: black;
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+.logo {
+    color: white;
+}
+.search-bar {
+    min-width: 790px;
+}
+.search-input {
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+}
+.navbar-top {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+}
+.first-menu {
+    width: 100%;
+    height: 90vh;
+    grid-row: span 2;
+    background: url('images/main/vr_waou.jpg') center / 100% no-repeat;
+    padding: 50px;
+}
+.first-menu a,
+.second-menu a,
+.third-menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 60px;
+    background: black;
+    transition: .5s;
+}
+.first-menu a .first-line,
+.second-menu a,
+.third-menu a .first-line {
+    padding: 10px;
+}
+.first-menu a .second-line,
+.third-menu a .second-line {
+    padding: 10px;
+}
+.first-menu a:hover,
+.second-menu a:hover,
+.third-menu a:hover {
+    background: white;
+    color: black;
+}
+.second-menu {
+    width: 100%;
+    height: 100%;
+    background: url('images/main/retro.jpg') center / 100% no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+.third-menu {
+    width: 100%;
+    height: 100%;
+    background: url('images/main/new.jpg') center / 100% no-repeat;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+    padding: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

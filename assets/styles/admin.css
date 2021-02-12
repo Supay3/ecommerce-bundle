@@ -62,13 +62,13 @@
     vertical-align: middle;
     width: 1rem;
     height: 1rem;
-    background: url('images/products.svg');
+    background: url('images/admin/products.svg');
 }
 .admin-navbar-side .sidebar-product-attributes::before {
-    background-image: url('images/product_attributes.svg');
+    background-image: url('images/admin/product_attributes.svg');
 }
 .admin-navbar-side .sidebar-product-options::before {
-    background-image: url('images/product_options.svg');
+    background-image: url('images/admin/product_options.svg');
 }
 
 /* We design the main */
