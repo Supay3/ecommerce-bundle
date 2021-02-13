@@ -1,28 +1,25 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
-
-// start the Stimulus application
-import './bootstrap';
-
-import {AdminProductProductAttributeValueType} from "./admin/product/AdminProductProductAttributeValueType";
-import {CollectionBasicType} from "./admin/CollectionBasicType";
-
-
-if (document.querySelector('.add-attribute-link')) {
-    let adminProductProductAttributeValueType = new AdminProductProductAttributeValueType(document.querySelector('.add-attribute-link'), '#product_productAttribute');
-}
-if (document.querySelector('.add-item-link')) {
-    let collectionBasicType = new CollectionBasicType(document.querySelector('.add-item-link'));
-}
-
-import $ from 'jquery';
-// any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
-import './styles/admin.css';
-import 'select2';
-$('#product_productOptions').select2();
-$('.admin-input-select').select2();
+
+
+// onscroll function, resize the header
+window.onscroll = function () {
+    scrollFunction();
+}
+
+let header = document.querySelector('.header-top');
+let logo = document.querySelector('.logo');
+let searchBarContainer = document.querySelector('.search-bar');
+let searchBar = document.querySelector('.search-input');
+function scrollFunction () {
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        header.style.height = '5vh';
+        logo.style.fontSize = '20px';
+        searchBarContainer.style.height = '20px';
+        searchBar.style.height = '20px';
+    } else {
+        header.style.height = '10vh';
+        logo.style.fontSize = '1.5rem';
+        searchBarContainer.style.height = '1.5rem';
+        searchBar.style.height = '1.5rem';
+    }
+}

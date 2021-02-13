@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, maximum-scale=1">
         <title>Ecommerce_bundle -{% block title %}{% endblock %}</title>
         {{ encore_entry_link_tags('app') }}
         {% block stylesheets %}{% endblock %}
@@ -14,12 +15,33 @@
             <div class="search-bar">
                 <input type="text" class="search-input">
             </div>
-            <nav class="navbar-top">
-                <a href="#" class="list-nav"><img src="images/main/list.svg" alt="list"></a>
-                <a href="#" class="account-nav"><img src="images/main/account.svg" alt="account"></a>
-                <a href="#" class="cart-nav"><img src="images/main/cart.svg" alt="cart"></a>
+            <nav role="navigation" class="navbar-top">
+                <ul class="navbar-list">
+                    <li class="list-element">
+                        <a href="#" class="list-nav"><img src="images/main/list.svg" alt="list"></a>
+                        <ul class="categories-list">
+                            <li>
+                                <a href="#">First Category</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Category</a>
+                            </li>
+                            <li>
+                                <a href="#">Third Category</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="account-nav"><img src="images/main/account.svg" alt="account"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="cart-nav"><img src="images/main/cart.svg" alt="cart"></a>
+                    </li>
+                </ul>
             </nav>
         </header>
-        {% block body %}{% endblock %}
+        <div class="grid-content">
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>

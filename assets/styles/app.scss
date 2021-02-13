@@ -1,0 +1,208 @@
+// We remove the browser basics
+@import "libs/reset.scss";
+
+// We import the functions
+@import "libs/functions.scss";
+
+// We make the fonts import
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+// Variables
+$search-width: rem(790);
+$navbar-width: rem(210);
+$grid-padding: rem(55);
+$transition: .3s;
+
+
+.main-body {
+    font: 400 $base-font-size 'Source Sans Pro';
+    line-height: 1.5;
+    background: #000000;
+}
+
+// We design the header
+.header-top {
+    grid-column: span 2;
+    background: #000000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 rem(50);
+    height: 10vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: $transition;
+
+    .navbar-list {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        height: 100%;
+
+        .categories-list {
+            position: fixed;
+            display: none;
+            background: #1d1d1d;
+            padding: rem(50);
+            top: 10vh;
+            left: 0;
+            height: 40vh;
+            width: 100vw;
+            transition: $transition;
+        }
+        .list-element img {
+            border: 1px #000000 solid;
+        }
+
+        .list-element img:hover {
+            animation: 1s rotation;
+            animation-fill-mode: forwards;
+        }
+
+        .list-element:hover > .categories-list,
+        .list-element .categories-list:hover,
+        &:hover .list-element .categories-list {
+            display: block;
+            visibility: visible;
+        }
+    }
+
+    .logo {
+        font-size: rem(24);
+        font-weight: 700;
+        transition: $transition;
+    }
+
+    .search-bar {
+        width: $search-width;
+        height: rem(24);
+        transition: $transition;
+    }
+
+    .search-bar .search-input {
+        width: 100%;
+        height: 100%;
+        transition: $transition;
+    }
+
+    .navbar-top {
+        width: $navbar-width;
+        display: flex;
+        justify-content: space-between;
+    }
+    .list-nav:hover {
+        animation-duration: 1s;
+        animation-name: rotation;
+    }
+}
+
+// We design the grid
+.grid-content {
+    display: grid;
+    grid-template: 1fr 1fr 95vh / repeat(2, 1fr);
+    margin-top: 10vh;
+
+    .first-menu,
+    .second-menu,
+    .third-menu,
+    .fourth-menu {
+        padding: $grid-padding;
+    }
+
+    .first-menu {
+        height: 90vh;
+        grid-row: span 2;
+        background: url('images/main/vr_waou.jpg') center / 100% no-repeat;
+        cursor: pointer;
+        transition: ease-in .2s;
+
+        &:hover {
+            background: url("images/main/vr_waou.jpg") center / 105% no-repeat;
+        }
+    }
+
+    .second-menu {
+        background: url('images/main/retro.jpg') center / 100% no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: ease-in .2s;
+
+        &:hover {
+            background: url("images/main/retro.jpg") center / 105% no-repeat;
+        }
+    }
+
+    .third-menu {
+        background: url('images/main/new.jpg') center / 100% no-repeat;
+        display: flex;
+        align-items: flex-end;
+        text-align: right;
+        justify-content: flex-end;
+        transition: ease-in .2s;
+
+        &:hover {
+            background: url("images/main/new.jpg") center / 105% no-repeat;
+        }
+    }
+    .fourth-menu {
+        background: url("images/main/stream.jpg") center / 100% no-repeat;
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    a {
+        padding: 0 rem(10);
+        background: #000000;
+        color: #FFFFFF;
+        text-decoration: none;
+        font-size: rem(55);
+        transition: .5s;
+
+        & .first-line {
+            padding-right: rem(10);
+        }
+        & .second-line {
+            padding-left: rem(10);
+        }
+
+        &:hover {
+            background: #FFFFFF;
+            color: #000000;
+        }
+    }
+}
+
+// Animation for the list
+@keyframes rotation {
+    from {
+
+    }
+    to {
+        transform: rotate(360deg);
+        border-bottom-color: #FFFFFF;
+    }
+}
+@keyframes disparition {
+    from {
+        visibility: visible;
+    }
+    to {
+        visibility: hidden;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

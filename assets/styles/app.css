@@ -1,117 +1,203 @@
-/* We make the fonts import */
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-
-/* We remove the browser basics */
-* {
-    box-sizing: border-box;
-    margin: 0;
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button, input, select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img, video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
 .main-body {
-    font: 400 16px 'Source Sans Pro';
-    line-height: 1.5;
-    display: grid;
-    grid-template: 10vh repeat(2, 1fr) / repeat(2, 1fr);
+  font: 400 16px "Source Sans Pro";
+  line-height: 1.5;
+  background: #000000;
 }
 
-/* We design the header */
 .header-top {
-    background: black;
-    grid-column: span 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 50px;
+  grid-column: span 2;
+  background: #000000;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3.125rem;
+  height: 10vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: 0.3s;
 }
-.logo {
-    color: white;
+.header-top .navbar-list {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 100%;
 }
-.search-bar {
-    min-width: 790px;
+.header-top .navbar-list .categories-list {
+  position: fixed;
+  display: none;
+  background: #1d1d1d;
+  padding: 3.125rem;
+  top: 10vh;
+  left: 0;
+  height: 40vh;
+  width: 100vw;
+  transition: 0.3s;
 }
-.search-input {
-    width: 100%;
-    border-radius: 5px;
-    border: none;
+.header-top .navbar-list .list-element img {
+  border: 1px #000000 solid;
 }
-.navbar-top {
-    width: 210px;
-    display: flex;
-    justify-content: space-between;
+.header-top .navbar-list .list-element img:hover {
+  animation: 1s rotation;
+  animation-fill-mode: forwards;
 }
-.first-menu {
-    width: 100%;
-    height: 90vh;
-    grid-row: span 2;
-    background: url('images/main/vr_waou.jpg') center / 100% no-repeat;
-    padding: 50px;
+.header-top .navbar-list .list-element:hover > .categories-list,
+.header-top .navbar-list .list-element .categories-list:hover, .header-top .navbar-list:hover .list-element .categories-list {
+  display: block;
+  visibility: visible;
 }
-.first-menu a,
-.second-menu a,
-.third-menu a {
-    text-decoration: none;
-    color: white;
-    font-size: 60px;
-    background: black;
-    transition: .5s;
+.header-top .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: 0.3s;
 }
-.first-menu a .first-line,
-.second-menu a,
-.third-menu a .first-line {
-    padding: 10px;
+.header-top .search-bar {
+  width: 49.375rem;
+  height: 1.5rem;
+  transition: 0.3s;
 }
-.first-menu a .second-line,
-.third-menu a .second-line {
-    padding: 10px;
+.header-top .search-bar .search-input {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s;
 }
-.first-menu a:hover,
-.second-menu a:hover,
-.third-menu a:hover {
-    background: white;
-    color: black;
+.header-top .navbar-top {
+  width: 13.125rem;
+  display: flex;
+  justify-content: space-between;
 }
-.second-menu {
-    width: 100%;
-    height: 100%;
-    background: url('images/main/retro.jpg') center / 100% no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
-}
-.third-menu {
-    width: 100%;
-    height: 100%;
-    background: url('images/main/new.jpg') center / 100% no-repeat;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    text-align: right;
-    padding: 50px;
+.header-top .list-nav:hover {
+  animation-duration: 1s;
+  animation-name: rotation;
 }
 
+.grid-content {
+  display: grid;
+  grid-template: 1fr 1fr 95vh/repeat(2, 1fr);
+  margin-top: 10vh;
+}
+.grid-content .first-menu,
+.grid-content .second-menu,
+.grid-content .third-menu,
+.grid-content .fourth-menu {
+  padding: 3.4375rem;
+}
+.grid-content .first-menu {
+  height: 90vh;
+  grid-row: span 2;
+  background: url("images/main/vr_waou.jpg") center/100% no-repeat;
+  cursor: pointer;
+  transition: ease-in 0.2s;
+}
+.grid-content .first-menu:hover {
+  background: url("images/main/vr_waou.jpg") center/105% no-repeat;
+}
+.grid-content .second-menu {
+  background: url("images/main/retro.jpg") center/100% no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in 0.2s;
+}
+.grid-content .second-menu:hover {
+  background: url("images/main/retro.jpg") center/105% no-repeat;
+}
+.grid-content .third-menu {
+  background: url("images/main/new.jpg") center/100% no-repeat;
+  display: flex;
+  align-items: flex-end;
+  text-align: right;
+  justify-content: flex-end;
+  transition: ease-in 0.2s;
+}
+.grid-content .third-menu:hover {
+  background: url("images/main/new.jpg") center/105% no-repeat;
+}
+.grid-content .fourth-menu {
+  background: url("images/main/stream.jpg") center/100% no-repeat;
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.grid-content a {
+  padding: 0 0.625rem;
+  background: #000000;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 3.4375rem;
+  transition: 0.5s;
+}
+.grid-content a .first-line {
+  padding-right: 0.625rem;
+}
+.grid-content a .second-line {
+  padding-left: 0.625rem;
+}
+.grid-content a:hover {
+  background: #FFFFFF;
+  color: #000000;
+}
 
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
+    border-bottom-color: #FFFFFF;
+  }
+}
+@keyframes disparition {
+  from {
+    visibility: visible;
+  }
+  to {
+    visibility: hidden;
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*# sourceMappingURL=app.css.map */
