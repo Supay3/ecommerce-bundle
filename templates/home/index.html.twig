@@ -1,25 +1,61 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="first-menu">
-        <h2>
-            <a href="#">
-                <span class="first-line">The VR,</span>
-                <br><span class="second-line">Just in front of you</span>
-            </a>
-        </h2>
+        <div class="text">
+            <h2>
+                <a href="#">
+                    <span class="first-line">The VR,</span>
+                    <br><span class="second-line">Just in front of you</span>
+                </a>
+            </h2>
+        </div>
+        <div class="img-container">
+            <picture class="img">
+                <img src="images/main/vr_waou.jpg" alt="Boy with a VR helmet">
+            </picture>
+        </div>
     </div>
     <div class="second-menu">
-        <h2><a href="#">Have you said retro gaming ?</a></h2>
+        <div class="text">
+            <h2>
+                <a href="#">
+                    <span class="first-line">Have you said retro gaming ?</span>
+                </a>
+            </h2>
+        </div>
+        <div class="img-container">
+            <picture class="img">
+                <img src="images/main/retro.jpg" alt="">
+            </picture>
+        </div>
     </div>
     <div class="third-menu">
-        <h2>
-            <a href="#">
-                <span class="first-line">Yes, as you expected</span>
-                <br><span class="second-line">We also have Playstation stuffs</span>
-            </a>
-        </h2>
+        <div class="text">
+            <h2>
+                <a href="#">
+                    <span class="first-line">Yes, as you expected</span>
+                    <br><span class="second-line">We also have Playstation products</span>
+                </a>
+            </h2>
+        </div>
+        <div class="img-container">
+            <picture class="img">
+                <img src="images/main/new.jpg" alt="">
+            </picture>
+        </div>
     </div>
     <div class="fourth-menu">
-        <h2><a href="#">Want to stream ? Gotcha</a></h2>
+        <div class="text">
+            <h2>
+                <a href="#">
+                    <span class="first-line">Want to stream ? Gotcha</span>
+                </a>
+            </h2>
+        </div>
+        <div class="img-container">
+            <picture class="img">
+                <img src="images/main/stream.jpg" alt="">
+            </picture>
+        </div>
     </div>
 {% endblock %}

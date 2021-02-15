@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, maximum-scale=1">
@@ -11,34 +11,32 @@
     </head>
     <body class="main-body">
         <header class="header-top">
-            <h1 class="logo">Ecommerce_bundle</h1>
-            <div class="search-bar">
-                <input type="text" class="search-input">
+            <div class="header-wrapper">
+                <h1 class="logo">Ecommerce_bundle</h1>
+                <div class="search-bar">
+                    <input type="text" class="search-input">
+                </div>
+                <nav role="navigation" class="navbar-top">
+                    <ul class="navbar-list">
+                        <li class="list-element">
+                            <a href="#" class="list-nav"><img src="images/main/list.svg" alt="list"></a>
+                            <ul class="categories-list">
+                                {% for category in productCategories %}
+                                    <li>
+                                        <a href="#">{{ category.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="list-element">
+                            <a href="#" class="account-nav"><img src="images/main/account.svg" alt="account"></a>
+                        </li>
+                        <li class="list-element">
+                            <a href="#" class="cart-nav"><img src="images/main/cart.svg" alt="cart"></a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <nav role="navigation" class="navbar-top">
-                <ul class="navbar-list">
-                    <li class="list-element">
-                        <a href="#" class="list-nav"><img src="images/main/list.svg" alt="list"></a>
-                        <ul class="categories-list">
-                            <li>
-                                <a href="#">First Category</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Category</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Category</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="account-nav"><img src="images/main/account.svg" alt="account"></a>
-                    </li>
-                    <li>
-                        <a href="#" class="cart-nav"><img src="images/main/cart.svg" alt="cart"></a>
-                    </li>
-                </ul>
-            </nav>
         </header>
         <div class="grid-content">
             {% block body %}{% endblock %}

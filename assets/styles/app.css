@@ -51,152 +51,163 @@ td, th {
   background: #000000;
 }
 
-.header-top {
-  grid-column: span 2;
-  background: #000000;
-  color: white;
+.categories-list {
+  position: absolute;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 3.125rem;
-  height: 10vh;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  transition: 0.3s;
-}
-.header-top .navbar-list {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  height: 100%;
-}
-.header-top .navbar-list .categories-list {
-  position: fixed;
-  display: none;
-  background: #1d1d1d;
-  padding: 3.125rem;
   top: 10vh;
   left: 0;
-  height: 40vh;
+  background: #2b2b2b;
   width: 100vw;
-  transition: 0.3s;
+  visibility: hidden;
+  padding: 3.125rem;
+  z-index: -1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.header-top .navbar-list .list-element img {
-  border: 1px #000000 solid;
+.categories-list a {
+  color: white;
+  text-decoration: none;
 }
-.header-top .navbar-list .list-element img:hover {
-  animation: 1s rotation;
-  animation-fill-mode: forwards;
+
+.header-top {
+  top: 0;
+  width: 100%;
+  height: 10vh;
+  position: fixed;
+  z-index: 6;
+  transition: 0.5s;
 }
-.header-top .navbar-list .list-element:hover > .categories-list,
-.header-top .navbar-list .list-element .categories-list:hover, .header-top .navbar-list:hover .list-element .categories-list {
-  display: block;
-  visibility: visible;
+.header-top .header-wrapper {
+  height: 100%;
+  color: white;
+  display: flex;
+  padding: 0 3.125rem;
+  justify-content: space-between;
+  align-items: center;
+  background: #000000;
+  position: relative;
 }
 .header-top .logo {
   font-size: 1.5rem;
-  font-weight: 700;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 .header-top .search-bar {
-  width: 49.375rem;
   height: 1.5rem;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 .header-top .search-bar .search-input {
-  width: 100%;
-  height: 100%;
-  transition: 0.3s;
+  border-radius: 0.3125rem;
+  border: none;
+  height: 1.5rem;
+  width: 49.375rem;
+  transition: 0.5s;
 }
-.header-top .navbar-top {
-  width: 13.125rem;
+.header-top .navbar-list {
+  width: 18.75rem;
   display: flex;
   justify-content: space-between;
 }
-.header-top .list-nav:hover {
-  animation-duration: 1s;
-  animation-name: rotation;
+.header-top .list-element img {
+  border-bottom: 1px transparent solid;
+}
+.header-top .list-element:hover img {
+  animation: rotation 1s forwards;
+}
+.header-top .list-element:hover > .categories-list,
+.header-top .list-element .categories-list:hover {
+  animation: menu-apparition 1s forwards;
 }
 
 .grid-content {
-  display: grid;
-  grid-template: 1fr 1fr 95vh/repeat(2, 1fr);
   margin-top: 10vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
-.grid-content .first-menu,
-.grid-content .second-menu,
-.grid-content .third-menu,
-.grid-content .fourth-menu {
-  padding: 3.4375rem;
-}
-.grid-content .first-menu {
-  height: 90vh;
-  grid-row: span 2;
-  background: url("images/main/vr_waou.jpg") center/100% no-repeat;
-  cursor: pointer;
-  transition: ease-in 0.2s;
-}
-.grid-content .first-menu:hover {
-  background: url("images/main/vr_waou.jpg") center/105% no-repeat;
-}
-.grid-content .second-menu {
-  background: url("images/main/retro.jpg") center/100% no-repeat;
+.grid-content .text {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: ease-in 0.2s;
+  position: absolute;
+  z-index: 1;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  padding: 3.125rem;
 }
-.grid-content .second-menu:hover {
-  background: url("images/main/retro.jpg") center/105% no-repeat;
+.grid-content .text h2 {
+  font-size: 3.125rem;
 }
-.grid-content .third-menu {
-  background: url("images/main/new.jpg") center/100% no-repeat;
-  display: flex;
-  align-items: flex-end;
-  text-align: right;
-  justify-content: flex-end;
-  transition: ease-in 0.2s;
+.grid-content .text h2 .first-line {
+  margin-bottom: 0.625rem;
 }
-.grid-content .third-menu:hover {
-  background: url("images/main/new.jpg") center/105% no-repeat;
-}
-.grid-content .fourth-menu {
-  background: url("images/main/stream.jpg") center/100% no-repeat;
-  grid-column: span 2;
-  grid-row: span 2;
-}
-.grid-content a {
-  padding: 0 0.625rem;
+.grid-content .text h2 a {
+  text-decoration: none;
   background: #000000;
   color: #FFFFFF;
-  text-decoration: none;
-  font-size: 3.4375rem;
   transition: 0.5s;
 }
-.grid-content a .first-line {
-  padding-right: 0.625rem;
-}
-.grid-content a .second-line {
-  padding-left: 0.625rem;
-}
-.grid-content a:hover {
+.grid-content .text h2 a:hover {
   background: #FFFFFF;
   color: #000000;
 }
+.grid-content .text h2 .first-line,
+.grid-content .text h2 .second-line {
+  padding: 0 0.625rem;
+}
+.grid-content .first-menu {
+  height: 90vh;
+  position: relative;
+  grid-row: span 2;
+}
+.grid-content .second-menu {
+  height: 45vh;
+  position: relative;
+}
+.grid-content .second-menu .text {
+  align-items: center;
+  justify-content: center;
+}
+.grid-content .third-menu {
+  height: 45vh;
+  position: relative;
+}
+.grid-content .third-menu .text {
+  align-items: flex-end;
+  justify-content: flex-end;
+  text-align: right;
+}
+.grid-content .fourth-menu {
+  height: 95vh;
+  position: relative;
+  grid-column: span 2;
+}
+.grid-content picture.img {
+  height: 100%;
+}
+.grid-content picture.img img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
 
+@keyframes menu-apparition {
+  from {
+    transform: translateY(-200px);
+    visibility: hidden;
+  }
+  to {
+    transform: none;
+    visibility: visible;
+  }
+}
 @keyframes rotation {
+  from {
+    transform: none;
+  }
   to {
     transform: rotate(360deg);
     border-bottom-color: #FFFFFF;
-  }
-}
-@keyframes disparition {
-  from {
-    visibility: visible;
-  }
-  to {
-    visibility: hidden;
   }
 }
 
