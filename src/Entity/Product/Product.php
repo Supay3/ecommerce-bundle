@@ -68,7 +68,7 @@ class Product
     /**
      * @ORM\ManyToOne(targetEntity=ProductCategory::class, inversedBy="products")
      */
-    private $productCategory;
+    private ?ProductCategory $productCategory = null;
 
     public function __construct()
     {
