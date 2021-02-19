@@ -2,13 +2,13 @@
 
 namespace App\Entity\Product;
 
+use App\Entity\Product\Product;
 use App\Repository\Product\ProductCategoryRepository;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use JetBrains\PhpStorm\Pure;
 
 /**
  * @ORM\Entity(repositoryClass=ProductCategoryRepository::class)
@@ -47,13 +47,28 @@ class ProductCategory
      */
     private Collection $products;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=ProductCategory::class, inversedBy="productCategories")
+     */
+    private ?ProductCategory $productCategory = null;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ProductCategory::class, mappedBy="productCategory")
+     */
+    private Collection $productCategories;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private int $primaryCategory = 0;
+
     public function __construct()
     {
         $this->created_at = new DateTime();
         $this->products = new ArrayCollection();
+        $this->productCategories = new ArrayCollection();
     }
 
-    #[Pure]
     public function __toString(): string
     {
         return $this->getName();
@@ -138,6 +153,60 @@ class ProductCategory
                 $product->setProductCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProductCategory(): ?self
+    {
+        return $this->productCategory;
+    }
+
+    public function setProductCategory(?self $productCategory): self
+    {
+        $this->productCategory = $productCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getProductCategories(): Collection
+    {
+        return $this->productCategories;
+    }
+
+    public function addProductCategory(self $productCategory): self
+    {
+        if (!$this->productCategories->contains($productCategory)) {
+            $this->productCategories[] = $productCategory;
+            $productCategory->setProductCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductCategory(self $productCategory): self
+    {
+        if ($this->productCategories->removeElement($productCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($productCategory->getProductCategory() === $this) {
+                $productCategory->setProductCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPrimaryCategory(): ?bool
+    {
+        return $this->primaryCategory;
+    }
+
+    public function setPrimaryCategory(bool $primaryCategory): self
+    {
+        $this->primaryCategory = $primaryCategory;
 
         return $this;
     }

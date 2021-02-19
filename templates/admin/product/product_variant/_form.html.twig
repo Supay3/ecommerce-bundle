@@ -1,0 +1,8 @@
+{% form_theme form 'admin/form/admin_form_theme.html.twig' %}
+{{ form_start(form) }}
+
+    {% for children in form.children %}
+        {{ form_row(children) }}
+    {% endfor %}
+
+{{ form_end(form) }}

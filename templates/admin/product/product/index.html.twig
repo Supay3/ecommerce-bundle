@@ -8,9 +8,7 @@
         <thead class="admin-table-head-index">
         <tr>
             <th>Name</th>
-            <th>Price</th>
             <th>Description</th>
-            <th>Stock</th>
             <th>Created at</th>
             <th>Updated at</th>
             <th></th>
@@ -20,9 +18,7 @@
         {% for product in products %}
             <tr>
                 <td>{{ product.name }}</td>
-                <td>{{ product.price }} €</td>
                 <td>{{ product.descriptionExcerpt }}</td>
-                <td>{{ product.stock }}</td>
                 <td>{{ product.createdAt ? product.createdAt|date('d/m/Y') : '' }}</td>
                 <td>{{ product.updatedAt ? product.updatedAt|date('d/m/Y') : '' }}</td>
                 <td class="admin-table-actions">

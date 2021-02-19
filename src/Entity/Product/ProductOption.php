@@ -2,6 +2,7 @@
 
 namespace App\Entity\Product;
 
+use App\Entity\Product\Product;
 use App\Repository\Product\ProductOptionRepository;
 use DateTime;
 use DateTimeInterface;

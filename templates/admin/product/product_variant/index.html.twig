@@ -1,0 +1,46 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title 'Product Variants' %}
+
+{% block body %}
+    {{ include('admin/_admin_header.html.twig') }}
+    <table class="admin-table">
+        <thead class="admin-table-head-index">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Width</th>
+                <th>Height</th>
+                <th>Depth</th>
+                <th>Weight</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="admin-table-body-index">
+        {% for product_variant in product_variants %}
+            <tr>
+                <td>{{ product_variant.product.name }}</td>
+                <td>{{ product_variant.price }}</td>
+                <td>{{ product_variant.stock }}</td>
+                <td>{{ product_variant.width }}</td>
+                <td>{{ product_variant.height }}</td>
+                <td>{{ product_variant.depth }}</td>
+                <td>{{ product_variant.weight }}</td>
+                <td>{{ product_variant.createdAt ? product_variant.createdAt|date('d/m/Y') : '' }}</td>
+                <td>{{ product_variant.updatedAt ? product_variant.updatedAt|date('d/m/Y') : '' }}</td>
+                <td class="admin-table-actions">
+                    <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_VARIANT_EDIT'), {'id': product_variant.id}) }}">Edit</a><!--
+                    -->{{ include('admin/product/product_variant/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

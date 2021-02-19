@@ -19,6 +19,15 @@ class ProductCategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, ProductCategory::class);
     }
 
+    public function findPrimaryCategories()
+    {
+        return $this->createQueryBuilder('pc')
+            ->andWhere('pc.primaryCategory = true')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return ProductCategory[] Returns an array of ProductCategory objects
     //  */

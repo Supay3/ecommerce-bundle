@@ -2,6 +2,7 @@
 
 namespace App\Entity\Product;
 
+use App\Entity\Product\ProductOptionValue;
 use App\Repository\Product\ProductAttributeValueRepository;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;

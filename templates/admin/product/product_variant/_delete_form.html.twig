@@ -1,0 +1,5 @@
+<form method="post" action="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_VARIANT_DELETE'), {'id': product_variant.id}) }}" class="admin-delete-form" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product_variant.id) }}">
+    <button class="admin-delete">Delete</button>
+</form>

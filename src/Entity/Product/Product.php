@@ -2,13 +2,14 @@
 
 namespace App\Entity\Product;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\Product\ProductRepository;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use JetBrains\PhpStorm\Pure;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\String\AbstractString;
 use Symfony\Component\String\UnicodeString;
 use function Symfony\Component\String\u;
@@ -16,6 +17,9 @@ use function Symfony\Component\String\u;
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
+#[ApiResource(attributes: [
+    'normalization_context' => ['groups' => ['read:product']]
+])]
 class Product
 {
     /**
@@ -28,27 +32,19 @@ class Product
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Groups(['read:product'])]
     private ?string $name = null;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private ?float $price = null;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
+    #[Groups(['read:product'])]
     private ?string $description = null;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private ?int $stock = null;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private ?DateTimeInterface $created_at = null;
+    private ?DateTimeInterface $created_at;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -70,11 +66,17 @@ class Product
      */
     private ?ProductCategory $productCategory = null;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ProductVariant::class, mappedBy="product", orphanRemoval=true)
+     */
+    private Collection $productVariants;
+
     public function __construct()
     {
         $this->productAttributeValues = new ArrayCollection();
         $this->productOptions = new ArrayCollection();
         $this->created_at = new DateTime();
+        $this->productVariants = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -99,18 +101,6 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -126,18 +116,6 @@ class Product
     public function getDescriptionExcerpt(): AbstractString|UnicodeString
     {
         return u($this->getDescription())->truncate(60, '...', false);
-    }
-
-    public function getStock(): ?int
-    {
-        return $this->stock;
-    }
-
-    public function setStock(int $stock): self
-    {
-        $this->stock = $stock;
-
-        return $this;
     }
 
     public function getCreatedAt(): ?DateTimeInterface
@@ -229,6 +207,36 @@ class Product
     public function setProductCategory(?ProductCategory $productCategory): self
     {
         $this->productCategory = $productCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getProductVariants(): Collection
+    {
+        return $this->productVariants;
+    }
+
+    public function addProductVariant(ProductVariant $productVariant): self
+    {
+        if (!$this->productVariants->contains($productVariant)) {
+            $this->productVariants[] = $productVariant;
+            $productVariant->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductVariant(ProductVariant $productVariant): self
+    {
+        if ($this->productVariants->removeElement($productVariant)) {
+            // set the owning side to null (unless already changed)
+            if ($productVariant->getProduct() === $this) {
+                $productVariant->setProduct(null);
+            }
+        }
 
         return $this;
     }

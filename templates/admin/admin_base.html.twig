@@ -13,7 +13,7 @@
     </head>
     <body class="admin-body">
         <header class="admin-header">
-            <h1 class="admin-h1">Logo</h1>
+            <h1 class="admin-h1">Ecommerce_bundle</h1>
             <nav class="admin-navbar-top">
                 <a href="#">Your website</a>
             </nav>
@@ -25,6 +25,7 @@
                 <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_ATTRIBUTE_INDEX')) }}" class="sidebar-product-attributes {% if header_title is defined and header_title == 'Product Attributes' %}active{% endif %}">Product Attributes</a>
                 <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_OPTION_INDEX')) }}" class="sidebar-product-options {% if header_title is defined and header_title == 'Product Options' %}active{% endif %}">Product Options</a>
                 <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_CATEGORY_INDEX')) }}" class="sidebar-product-category {% if header_title is defined and header_title == 'Product Categories' %}active{% endif %}">Product Categories</a>
+                <a href="{{ path(constant('App\\Controller\\RouteName::ADMIN_PRODUCT_VARIANT_INDEX')) }}" class="sidebar-product-category {% if header_title is defined and header_title == 'Product Variants' %}active{% endif %}">Product Variants</a>
             </nav>
         </aside>
         <main class="admin-main">

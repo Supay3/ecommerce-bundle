@@ -3,6 +3,7 @@
 namespace App\Form\Product;
 
 use App\Entity\Product\ProductCategory;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,6 +19,10 @@ class ProductCategoryType extends AbstractType
                 'required' => true,
             ])
             ->add('description', TextareaType::class, [
+                'required' => false,
+            ])
+            ->add('productCategory', EntityType::class, [
+                'class' => ProductCategory::class,
                 'required' => false,
             ])
         ;

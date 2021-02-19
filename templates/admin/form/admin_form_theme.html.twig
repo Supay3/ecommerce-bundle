@@ -22,6 +22,52 @@
     </div>
 {% endblock %}
 
+{# IntegerType #}
+{% block integer_row %}
+    <div class="admin-form-group admin-integer-field">
+        <label for="{{ form.vars.id }}"
+               class="admin-form-label {{ form.vars.required ? 'required' }}">
+            {% if form.vars.label is not null %}
+                {{ form.vars.label }}
+            {% else %}
+                {{ form.vars.name | u.snake.replace('_', ' ') | title }}
+            {% endif %}
+        </label>
+        <input type="number"
+               class="admin-input-integer"
+               id="{{ form.vars.id }}"
+               name="{{ form.vars.full_name }}"
+                {{ form.vars.required ? 'required="required"' }}
+                {% if form.vars.attr is not empty and form.vars.attr.placeholder is defined %}
+                    placeholder="{{ form.vars.attr.placeholder }}"
+                {% endif %}
+               value="{{ form.vars.value }}">
+    </div>
+{% endblock %}
+
+{# NumberType #}
+{% block number_row %}
+    <div class="admin-form-group admin-number-field">
+        <label for="{{ form.vars.id }}"
+               class="admin-form-label {{ form.vars.required ? 'required' }}">
+            {% if form.vars.label is not null %}
+                {{ form.vars.label }}
+            {% else %}
+                {{ form.vars.name | u.snake.replace('_', ' ') | title }}
+            {% endif %}
+        </label>
+        <input type="text"
+               class="admin-input-number"
+               id="{{ form.vars.id }}"
+               name="{{ form.vars.full_name }}"
+                {{ form.vars.required ? 'required="required"' }}
+                {% if form.vars.attr is not empty and form.vars.attr.placeholder is defined %}
+                    placeholder="{{ form.vars.attr.placeholder }}"
+                {% endif %}
+               value="{{ form.vars.value }}">
+    </div>
+{% endblock %}
+
 {# TextType #}
 {% block text_row %}
     <div class="admin-form-group admin-text-field">
@@ -168,29 +214,6 @@
     {% for children in form.children %}
         {{ form_row(children) }}
     {% endfor %}
-{% endblock %}
-
-{# IntegerType #}
-{% block integer_row %}
-    <div class="admin-form-group admin-integer-field">
-        <label for="{{ form.vars.id }}"
-               class="admin-form-label {{ form.vars.required ? 'required' }}">
-            {% if form.vars.label is not null %}
-                {{ form.vars.label }}
-            {% else %}
-                {{ form.vars.name | u.snake.replace('_', ' ') | title }}
-            {% endif %}
-        </label>
-        <input type="number"
-               class="admin-input-integer"
-               id="{{ form.vars.id }}"
-               name="{{ form.vars.full_name }}"
-                {{ form.vars.required ? 'required="required"' }}
-                {% if form.vars.attr is not empty and form.vars.attr.placeholder is defined %}
-                    placeholder="{{ form.vars.attr.placeholder }}"
-                {% endif %}
-               value="{{ form.vars.value }}">
-    </div>
 {% endblock %}
 
 {# ProductAttributeValue #}

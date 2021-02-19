@@ -9,8 +9,6 @@ use App\Entity\Product\ProductOption;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -36,7 +34,7 @@ class ProductType extends AbstractType
                 'class' => ProductCategory::class,
                 'required' => false,
                 'placeholder' => 'You can choose a Category',
-            ])
+            ])/*
             ->add('price', MoneyType::class, [
                 'required' => true,
             ])
@@ -46,7 +44,7 @@ class ProductType extends AbstractType
                     'placeholder' => '0',
                 ],
                 'required' => true,
-            ])
+            ])*/
             ->add('productAttribute', EntityType::class, [
                 'class' => ProductAttribute::class,
                 'mapped' => false,

@@ -195,13 +195,15 @@
 .admin-input-select,
 .admin-select-attribute,
 .admin-attributes-list,
-.admin-list {
+.admin-list,
+.admin-input-number {
     flex: 0 0 40%;
 }
 .admin-input-text,
 .admin-input-textarea,
 .admin-input-integer,
 .admin-input-money,
+.admin-input-number,
 .admin-select-field .select2,
 .admin-select-attribute {
     min-height: 30px;
@@ -234,7 +236,8 @@
 .admin-input-money,
 .admin-input-text,
 .admin-input-textarea,
-.admin-input-integer {
+.admin-input-integer,
+.admin-input-number {
     padding: 0 .313rem;
     font: 400 15px 'Source Sans Pro';
 }

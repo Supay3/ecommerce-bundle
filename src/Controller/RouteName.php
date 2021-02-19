@@ -39,4 +39,11 @@ class RouteName
     public const ADMIN_PRODUCT_CATEGORY_SHOW = 'admin_product_category_show';
     public const ADMIN_PRODUCT_CATEGORY_EDIT = 'admin_product_category_edit';
     public const ADMIN_PRODUCT_CATEGORY_DELETE = 'admin_product_category_delete';
+
+    // Routes for administration product variants
+    public const ADMIN_PRODUCT_VARIANT_INDEX = 'admin_product_variant_index';
+    public const ADMIN_PRODUCT_VARIANT_NEW = 'admin_product_variant_new';
+    public const ADMIN_PRODUCT_VARIANT_SHOW = 'admin_product_variant_show';
+    public const ADMIN_PRODUCT_VARIANT_EDIT = 'admin_product_variant_edit';
+    public const ADMIN_PRODUCT_VARIANT_DELETE = 'admin_product_variant_delete';
 }

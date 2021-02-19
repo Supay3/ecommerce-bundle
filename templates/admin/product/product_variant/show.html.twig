@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProductVariant{% endblock %}
+
+{% block body %}
+    <h1>ProductVariant</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product_variant.id }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ product_variant.price }}</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>{{ product_variant.stock }}</td>
+            </tr>
+            <tr>
+                <th>Width</th>
+                <td>{{ product_variant.width }}</td>
+            </tr>
+            <tr>
+                <th>Height</th>
+                <td>{{ product_variant.height }}</td>
+            </tr>
+            <tr>
+                <th>Depth</th>
+                <td>{{ product_variant.depth }}</td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>{{ product_variant.weight }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ product_variant.createdAt ? product_variant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ product_variant.updatedAt ? product_variant.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('product_product_variant_index') }}">back to list</a>
+
+    <a href="{{ path('product_product_variant_edit', {'id': product_variant.id}) }}">edit</a>
+
+    {{ include('product_product_variant/_delete_form.html.twig') }}
+{% endblock %}
